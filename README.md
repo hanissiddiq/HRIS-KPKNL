@@ -15,7 +15,7 @@ Untuk jalanin nya
 7. Jalankan apache & Mysql di Xampp atau Laragon kemudian akses PHPMYADMIN
 8. Buatlah Database kosong dengan nama ``db_hris_kpknl``
 9. jalankan ``php artisan storage:link`` untuk membaca source gambar yang tidak muncul
-10. Jalankan perintah ``php artisan migrate:fresh --seed --seeder=UserSeeder`` di terminal vscode atau untuk mengisi data dummy di database ``php artisan db:seed``
+10. Jalankan perintah ``php artisan migrate:fresh --seed --seeder=HumanResourceSeeder`` di terminal vscode atau untuk mengisi data dummy di database ``php artisan db:seed``
 11. Jalankan perintah ``php artisan serve``
 12. Buka http://127.0.0.1:8000/ di browser
 
