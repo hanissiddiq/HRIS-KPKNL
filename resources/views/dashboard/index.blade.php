@@ -28,7 +28,7 @@
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                                 <h6 class="text-muted font-semibold">Profile Views</h6>
-                                                <h6 class="font-extrabold mb-0">112.000</h6>
+                                                <h6 class="font-extrabold mb-0">58</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -45,8 +45,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Followers</h6>
-                                                <h6 class="font-extrabold mb-0">183.000</h6>
+                                                <h6 class="text-muted font-semibold">Pegawai ASN</h6>
+                                                <h6 class="font-extrabold mb-0">26</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -63,8 +63,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Following</h6>
-                                                <h6 class="font-extrabold mb-0">80.000</h6>
+                                                <h6 class="text-muted font-semibold">Pegawai Non ASN</h6>
+                                                <h6 class="font-extrabold mb-0">14</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -81,8 +81,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Saved Post</h6>
-                                                <h6 class="font-extrabold mb-0">112</h6>
+                                                <h6 class="text-muted font-semibold">Honorer</h6>
+                                                <h6 class="font-extrabold mb-0">5</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -205,11 +205,11 @@
                                                                     <img
                                                                         src="{{ asset('mazer/dist/assets/compiled/jpg/5.jpg') }}">
                                                                 </div>
-                                                                <p class="font-bold ms-3 mb-0">Si Cantik</p>
+                                                                <p class="font-bold ms-3 mb-0">Rekha Agustina</p>
                                                             </div>
                                                         </td>
                                                         <td class="col-auto">
-                                                            <p class=" mb-0">Congratulations on your graduation!</p>
+                                                            <p class=" mb-0">Aplikasi sangat responsif dan mudah digunakan, antarmuka ramah bagi pengguna baru.</p>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -219,13 +219,11 @@
                                                                     <img
                                                                         src="{{ asset('mazer/dist/assets/compiled/jpg/2.jpg') }}">
                                                                 </div>
-                                                                <p class="font-bold ms-3 mb-0">Si Ganteng</p>
+                                                                <p class="font-bold ms-3 mb-0">Rianzard Ritonga</p>
                                                             </div>
                                                         </td>
                                                         <td class="col-auto">
-                                                            <p class=" mb-0">Wow amazing design! Can you make another
-                                                                tutorial for
-                                                                this design?</p>
+                                                            <p class=" mb-0">Pengajuan izin cepat diproses, sangat membantu saat kondisi mendesak atau mendadak</p>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -235,12 +233,11 @@
                                                                     <img
                                                                         src="{{ asset('mazer/dist/assets/compiled/jpg/8.jpg') }}">
                                                                 </div>
-                                                                <p class="font-bold ms-3 mb-0">Singh Eknoor</p>
+                                                                <p class="font-bold ms-3 mb-0">Zulfath</p>
                                                             </div>
                                                         </td>
                                                         <td class="col-auto">
-                                                            <p class=" mb-0">What a stunning design! You are so
-                                                                talented and creative!</p>
+                                                            <p class=" mb-0">Dashboard sangat informatif, memudahkan monitoring kinerja dan kedisiplinan karyawan.</p>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -250,12 +247,11 @@
                                                                     <img
                                                                         src="{{ asset('mazer/dist/assets/compiled/jpg/3.jpg') }}">
                                                                 </div>
-                                                                <p class="font-bold ms-3 mb-0">Rani Jhadav</p>
+                                                                <p class="font-bold ms-3 mb-0">Muzammil</p>
                                                             </div>
                                                         </td>
                                                         <td class="col-auto">
-                                                            <p class=" mb-0">I love your design! It’s so beautiful and
-                                                                unique! How did you learn to do this?</p>
+                                                            <p class=" mb-0">Data real-time dan akurat, meminimalisir kesalahan dalam evaluasi karyawan.</p>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -275,15 +271,15 @@
                                             alt="Face 1">
                                     </div>
                                     <div class="ms-3 name">
-                                        <h5 class="font-bold">John Duck</h5>
-                                        <h6 class="text-muted mb-0">@johnducky</h6>
+                                        <h5 class="font-bold">Wafiq</h5>
+                                        <h6 class="text-muted mb-0">@wafiqabadi</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                <h4>Recent Messages</h4>
+                                <h4>Pesan</h4>
                             </div>
                             <div class="card-content pb-4">
                                 <div class="recent-message d-flex px-4 py-3">
@@ -291,8 +287,8 @@
                                         <img src="{{ asset('mazer/dist/assets/compiled/jpg/4.jpg') }}">
                                     </div>
                                     <div class="name ms-4">
-                                        <h5 class="mb-1">Hank Schrader</h5>
-                                        <h6 class="text-muted mb-0">@johnducky</h6>
+                                        <h5 class="mb-1">Nurhaliza</h5>
+                                        <h6 class="text-muted mb-0">@Nurhlzaa</h6>
                                     </div>
                                 </div>
                                 <div class="recent-message d-flex px-4 py-3">
@@ -300,8 +296,8 @@
                                         <img src="{{ asset('mazer/dist/assets/compiled/jpg/5.jpg') }}">
                                     </div>
                                     <div class="name ms-4">
-                                        <h5 class="mb-1">Dean Winchester</h5>
-                                        <h6 class="text-muted mb-0">@imdean</h6>
+                                        <h5 class="mb-1">Afra Diana</h5>
+                                        <h6 class="text-muted mb-0">@Afradiana2001</h6>
                                     </div>
                                 </div>
                                 <div class="recent-message d-flex px-4 py-3">
@@ -309,8 +305,8 @@
                                         <img src="{{ asset('mazer/dist/assets/compiled/jpg/1.jpg') }}">
                                     </div>
                                     <div class="name ms-4">
-                                        <h5 class="mb-1">John Dodol</h5>
-                                        <h6 class="text-muted mb-0">@dodoljohn</h6>
+                                        <h5 class="mb-1">Safarina</h5>
+                                        <h6 class="text-muted mb-0">@chavanina</h6>
                                     </div>
                                 </div>
                                 <div class="px-4">
