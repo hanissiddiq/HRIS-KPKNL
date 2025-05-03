@@ -162,12 +162,21 @@
                                 <span>Pengajuan Cuti</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="table.html" class='sidebar-link'>
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>Log Out</span>
+                        {{-- <li class="sidebar-item  ">
+                            <a href="{{url('/logout')}}" class='sidebar-link'>
+                                <i class="bi bi-shift-fill"></i>
+                                <span>Keluar</span>
                             </a>
+                        </li> --}}
+
+                        <li class="sidebar-item ">
+                            <form method="POST"  class='sidebar-link' action="{{ route('logout') }}" >
+                                @csrf
+                                <button type="submit" class="w-100 border-0 bg-transparent d-flex align-items-center px-3 py-2 text-start">
+                                    <i class="bi bi-box-arrow-right me-2"></i>
+                                    <span>Log Out</span>
+                                </button>
+                            </form>
                         </li>
 
 
