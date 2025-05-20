@@ -134,8 +134,8 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item  ">
-                            <a href="table.html" class='sidebar-link'>
+                        <li class="sidebar-item  {{ $page == 'Employee' ? 'active' : '' }}  ">
+                            <a href="{{ route('employee') }}" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
                                 <span>Pegawai</span>
                             </a>
