@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Department;
+use App\Models\Departement;
 use App\Models\Role;
 use App\Models\Employee;
 
@@ -25,21 +25,31 @@ class EmployeeController extends Controller
         $data['page'] = 'Employee';
         $data['judul_page'] = 'Create Employee';
         $data['pegawai'] = Employee::all()->sortBy('fullname');;
+        $data['departemen'] = Departement::all()->sortBy('name');;
+        $data['role'] = Role::all()->sortBy('title');;
         return view('employees.create', $data);
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'assigned_to' => 'required',
-            'due_date' => 'required|date',
+            'fullname' => 'required|string|max:255',
+            'email' => 'nullable|string',
+            'phone_number' => 'required',
+            'address' => 'required',
+            'birth_date' => 'required|date',
+            'hire_date' => 'required|date',
+            'departement_id' => 'required',
+            'role_id' => 'required',
             'status' => 'required|string',
+            'salary' => 'required',
         ]);
+
+
 
         //         //Jika Berhasil
         Employee::create($validated);
+
         return redirect()->route('employee')->with('success', 'Employee created successfully.');
     }
 

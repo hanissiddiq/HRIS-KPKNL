@@ -71,7 +71,7 @@
                                 <th>Hire Date</th> --}}
                                 <th>Department</th>
                                 <th>Role</th>
-                                <th>Salary</th>
+                                {{-- <th>Salary</th> --}}
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -86,7 +86,7 @@
                                     <td>{{ optional($e->departement)->name }}</td>
                                     <td>{{ optional($e->role)->title }}</td>
 
-                                    <td>{{ 'Rp. ' . number_format($e->salary, 0, ',', '.') }}</td>
+                                    {{-- <td>{{ 'Rp. ' . number_format($e->salary, 0, ',', '.') }}</td> --}}
 
                                     <td>
                                         @if ($e->status == 'unactive')
