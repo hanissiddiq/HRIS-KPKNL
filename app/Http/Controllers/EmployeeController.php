@@ -57,6 +57,8 @@ class EmployeeController extends Controller
     {
         $data['page'] = 'Employee';
         $data['judul_page'] = 'Edit Employee';
+        $data['departemen'] = Departement::all()->sortBy('name');
+        $data['role'] = Role::all()->sortBy('name');
         $data['employee'] = Employee::find($id);
         $data['pegawai'] = Employee::all();
         return view('employees.edit', $data);
@@ -65,15 +67,23 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'assigned_to' => 'required',
-            'due_date' => 'required|date',
+            'fullname' => 'required|string|max:255',
+            'email' => 'nullable|string',
+            'phone_number' => 'required',
+            'address' => 'required',
+            'birth_date' => 'required|date',
+            'hire_date' => 'required|date',
+            'departement_id' => 'required',
+            'role_id' => 'required',
             'status' => 'required|string',
+            'salary' => 'required',
         ]);
 
+
         // Jika Berhasil
-        Employee::where('id', $id)->update($validated);
+        $employee = Employee::findOrFail($id);
+        $employee->update($validated);
+
         return redirect()->route('employee')->with('success', 'Employee updated successfully.');
     }
 
