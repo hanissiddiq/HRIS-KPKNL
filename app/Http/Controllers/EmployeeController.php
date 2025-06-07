@@ -107,7 +107,8 @@ class EmployeeController extends Controller
         // Jika Berhasil
         $employee = Employee::find($id);
         $employee->update(['status' => 'done']);
-
+        // $employee->update(['status' => 'active']);
+        
         return redirect()->route('employee')->with('success', 'Employee marked as done.');
     }
     public function pending($id)
@@ -115,6 +116,7 @@ class EmployeeController extends Controller
         // Jika Berhasil
         $employee = Employee::find($id);
         $employee->update(['status' => 'pending']);
+        // $employee->update(['status' => 'unactive']);
 
         return redirect()->route('employee')->with('success', 'Employee marked as pending.');
     }

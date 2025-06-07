@@ -105,28 +105,32 @@
                                     <td>
 
 
-                                        <div class="btn-group" role="group">
+
+                                        
                                             <a href="{{ route('employee.show', $e->id) }}"
-                                                class="btn icon btn-outline-primary btn-sm" data-bs-toggle="tooltip"
+                                                class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip"
                                                 title="View">
                                                 <i class="bi bi-eye"></i>
                                             </a>
+
                                             <a href="{{ route('employee.edit', $e->id) }}"
                                                 class="btn btn-outline-success btn-sm" data-bs-toggle="tooltip"
                                                 title="Edit">
-                                                <i class="bi bi-pencil"> </i>
+                                                <i class="bi bi-pencil"></i>
                                             </a>
 
                                             <form action="{{ route('employee.destroy', $e->id) }}" method="POST"
-                                                style="display: inline" class="btn btn-outline-danger btn-sm">
+                                                onsubmit="return confirm('Yakin Menghapus Data?');" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Yakin Menghapus Data?')"
-                                                    class=""><i class="bi bi-trash">
-                                                    </i></button>
+                                                <button type="submit" class="btn btn-outline-danger btn-sm"
+                                                    data-bs-toggle="tooltip" title="Delete">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
                                             </form>
+                                       
 
-                                        </div>
+
                                     </td>
                                     {{-- <td>
                                     <span class="badge bg-success">Active</span>

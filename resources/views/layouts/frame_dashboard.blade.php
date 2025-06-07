@@ -182,7 +182,7 @@
                             </a>
                         </li> --}}
 
-                        <li class="sidebar-item ">
+                        {{-- <li class="sidebar-item ">
                             <form method="POST" class='sidebar-link' action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit"
@@ -190,6 +190,18 @@
                                     <i class="bi bi-box-arrow-right me-2"></i>
                                     <span>Log Out</span>
                                 </button>
+                            </form>
+                        </li> --}}
+
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link d-flex align-items-center px-3 py-2 text-start btn btn-outline-danger"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="bi bi-box-arrow-right me-2"></i>
+                                <span>Log Out</span>
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
                             </form>
                         </li>
 
