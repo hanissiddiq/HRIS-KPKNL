@@ -12,4 +12,14 @@ class Employee extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['fullname', 'email', 'phone_number', 'address','birth_date','hire_date','departement_id','role_id', 'status', 'salary'];
+
+    public function departement()
+    {
+        return $this->belongsTo(Departement::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

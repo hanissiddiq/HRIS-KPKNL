@@ -76,7 +76,7 @@
                                     <td>{{ $t->title }}</td>
                                     {{-- <td>{{ $t->description }}</td> --}}
                                     {{-- <td>{{ $t->assigned_to }}</td> --}}
-                                    <td>{{ ucwords($t->employee->fullname) }}</td>
+                                    <td>{{ ucwords($t->employee?->fullname ?? '-') }}</td>
                                     <td>{{ date('d-M-Y', strtotime($t->due_date)) }}</td>
                                     <td>
                                         @if ($t->status == 'pending')
@@ -93,35 +93,45 @@
 
 
                                     <td>
-
-                                        <div class="btn-group" role="group">
+                                        <div class="btn-group me-1" role="group">
                                             @if ($t->status == 'pending')
-                                                <a href="{{ route('task.done', $t->id) }}" class="btn btn-outline-info btn-sm">. Mark As Done ..</a>
+                                                <a href="{{ route('task.done', $t->id) }}"
+                                                    class="btn btn-outline-info btn-sm" data-bs-toggle="tooltip"
+                                                    title="Mark As Done">
+                                                    <i class="bi bi-check-circle me-1"></i> Done
+                                                </a>
                                             @else
-                                                <a href="{{ route('task.pending', $t->id) }}" class="btn btn-outline-warning btn-sm">Mark As Pending</a>
+     
+                                            <a href="{{ route('task.pending', $t->id) }}"
+                                                    class="btn btn-outline-warning btn-sm" data-bs-toggle="tooltip"
+                                                    title="Mark As Pending">
+                                                    <i class="bi bi-hourglass-split me-1"></i> Pending
+                                                </a>
                                             @endif
                                         </div>
-                                        <div class="btn-group" role="group">
-                                            <a href="{{ route('task.show', $t->id) }}" class="btn icon btn-outline-primary btn-sm" data-bs-toggle="tooltip"
-                                                title="View">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="{{ route('task.edit', $t->id) }}"
-                                                class="btn btn-outline-success btn-sm" data-bs-toggle="tooltip"
-                                                title="Edit">
-                                                <i class="bi bi-pencil"> </i>
-                                            </a>
 
-                                            <form action="{{ route('task.destroy', $t->id) }}" method="POST"
-                                                style="display: inline" class="btn btn-outline-danger btn-sm">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Yakin Menghapus Data?')"
-                                                    class=""><i class="bi bi-trash">
-                                                    </i></button>
-                                            </form>
 
-                                        </div>
+                                        <a href="{{ route('task.show', $t->id) }}" class="btn btn-outline-primary btn-sm"
+                                            data-bs-toggle="tooltip" title="View">
+                                            <i class="bi bi-eye"></i>
+                   
+                                        </a>
+
+                                        <a href="{{ route('task.edit', $t->id) }}" class="btn btn-outline-success btn-sm"
+                                            data-bs-toggle="tooltip" title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        <form action="{{ route('task.destroy', $t->id) }}" method="POST"
+                                            onsubmit="return confirm('Yakin menghapus data?');" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger btn-sm"
+                                                data-bs-toggle="tooltip" title="Delete">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+
                                     </td>
                                     {{-- <td>
                                     <span class="badge bg-success">Active</span>
