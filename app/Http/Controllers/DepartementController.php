@@ -27,6 +27,10 @@ class DepartementController extends Controller
     public function create()
     {
         //
+        $data['page'] = 'Departement';
+        $data['judul_page'] = 'Create Departement';
+
+        return view('departement.create', $data);
     }
 
     /**
@@ -35,6 +39,16 @@ class DepartementController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+
+            'status' => 'required|string',
+        ]);
+
+        //         //Jika Berhasil
+        Departement::create($validated);
+        return redirect()->route('departement')->with('success', 'Departement created successfully.');
     }
 
     /**
