@@ -40,10 +40,9 @@ class DepartementController extends Controller
     {
         //
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-
-            'status' => 'required|string',
+            'name'          => 'required|string|max:255',
+            'description'   => 'nullable|string',
+            'status'        => 'required|string',
         ]);
 
         //         //Jika Berhasil
@@ -57,9 +56,9 @@ class DepartementController extends Controller
     public function show(string $id)
     {
         //
-        $data['page'] = 'Departement';
-        $data['judul_page'] = 'Detail Departement';
-        $data['departement'] = Departement::find($id);
+        $data['page']           = 'Departement';
+        $data['judul_page']     = 'Detail Departement';
+        $data['departement']    = Departement::find($id);
         return view('departement.show', $data);
     }
 
@@ -69,6 +68,11 @@ class DepartementController extends Controller
     public function edit(string $id)
     {
         //
+        $data['page'] = 'Departement';
+        $data['judul_page'] = 'Edit Departement';
+        $data['departement'] = Departement::find($id);
+
+        return view('departement.edit', $data);
     }
 
     /**
@@ -76,7 +80,15 @@ class DepartementController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+         $validated = $request->validate([
+            'name'          => 'required|string|max:255',
+            'description'   => 'nullable|string',
+            'status'        => 'required|string',
+        ]);
+
+        // Jika Berhasil
+        Departement::where('id', $id)->update($validated);
+        return redirect()->route('departement')->with('success', 'Departement updated successfully.');
     }
 
     /**
