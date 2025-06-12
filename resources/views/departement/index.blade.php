@@ -99,9 +99,11 @@
                                             <i class="bi bi-pencil"></i>
                                         </a>
 
+                                        {{-- Form DELETE --}}
                                         <form action="{{ route('departement.destroy', $d->id) }}" method="POST"
                                             onsubmit="return confirm('Yakin Menghapus Data?');" class="d-inline">
                                             @csrf
+                                            {{-- Methode DELETE --}}
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger btn-sm"
                                                 data-bs-toggle="tooltip" title="Delete">

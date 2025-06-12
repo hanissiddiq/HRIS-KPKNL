@@ -61,8 +61,8 @@
                             <label for="status" class="form-label">Status</label>
                             <select name="status" id="status"
                                 class="form-control  @error('status') is_invalid @enderror">
-                                <option value="active">ACTIVE</option>
-                                <option value="unactive">UNACTIVE</option>
+                                <option value="active" @if (old('status',$departement->status) == 'active') selected @endif>ACTIVE</option>
+                                <option value="unactive" @if (old('status',$departement->status) == 'unactive') selected @endif>UNACTIVE</option>
 
                             </select>
                             @error('status')

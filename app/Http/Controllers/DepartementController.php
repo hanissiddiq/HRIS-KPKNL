@@ -96,6 +96,7 @@ class DepartementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Departement::destroy($id);
+        return redirect()->route('departement')->with('success', 'Departement deleted successfully.');
     }
 }
