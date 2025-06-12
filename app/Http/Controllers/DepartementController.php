@@ -57,6 +57,10 @@ class DepartementController extends Controller
     public function show(string $id)
     {
         //
+        $data['page'] = 'Departement';
+        $data['judul_page'] = 'Detail Departement';
+        $data['departement'] = Departement::find($id);
+        return view('departement.show', $data);
     }
 
     /**
