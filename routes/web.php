@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\DepartementController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -39,6 +40,15 @@ Route::post('/employee', [EmployeeController::class, 'store'])->name('employee.s
 Route::delete('/employee/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
 Route::get('/employee/detail/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
 Route::put('/employee/detail/{id}', [EmployeeController::class, 'update'])->name('employee.update');
+
+// Handling rute untuk departement
+Route::get('/departement', [DepartementController::class, 'index'])->name('departement');
+Route::get('/departement/show/{id}', [DepartementController::class, 'show'])->name('departement.show');
+Route::get('/departement/create', [DepartementController::class, 'create'])->name('departement.create');
+Route::post('/departement', [DepartementController::class, 'store'])->name('departement.store');
+Route::delete('/departement/{id}', [DepartementController::class, 'destroy'])->name('departement.destroy');
+Route::get('/departement/detail/{id}', [DepartementController::class, 'edit'])->name('departement.edit');
+Route::put('/departement/detail/{id}', [DepartementController::class, 'update'])->name('departement.update');
 
 
 // Route::get('/laundry', [LaundryController::class, 'index'])->middleware('auth');

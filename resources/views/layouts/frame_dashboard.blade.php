@@ -140,11 +140,10 @@
                                 <span>Pegawai</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="table.html" class='sidebar-link'>
+                        <li class="sidebar-item  {{ $page == 'Departement' ? 'active' : '' }}  ">
+                            <a href="{{ route('departement') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-1x2-fill"></i>
-                                <span>Departemen</span>
+                                <span>Departement</span>
                             </a>
                         </li>
 
