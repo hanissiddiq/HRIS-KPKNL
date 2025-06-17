@@ -25,7 +25,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $data['page'] = 'Role';
+        $data['judul_page'] = 'Create Role';
+
+        return view('roles.create', $data);
     }
 
     /**
@@ -33,7 +36,14 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            ]);
+
+        //         //Jika Berhasil
+        Role::create($validated);
+        return redirect()->route('role')->with('success', 'Role created successfully.');
     }
 
     /**
