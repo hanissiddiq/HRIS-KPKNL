@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -49,6 +50,15 @@ Route::post('/departement', [DepartementController::class, 'store'])->name('depa
 Route::delete('/departement/{id}', [DepartementController::class, 'destroy'])->name('departement.destroy');
 Route::get('/departement/detail/{id}', [DepartementController::class, 'edit'])->name('departement.edit');
 Route::put('/departement/detail/{id}', [DepartementController::class, 'update'])->name('departement.update');
+
+// Handling rute untuk departement
+Route::get('/role', [RoleController::class, 'index'])->name('role');
+Route::get('/role/show/{id}', [RoleController::class, 'show'])->name('role.show');
+Route::get('/role/create', [RoleController::class, 'create'])->name('role.create');
+Route::post('/role', [RoleController::class, 'store'])->name('role.store');
+Route::delete('/role/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
+Route::get('/role/detail/{id}', [RoleController::class, 'edit'])->name('role.edit');
+Route::put('/role/detail/{id}', [RoleController::class, 'update'])->name('role.update');
 
 
 // Route::get('/laundry', [LaundryController::class, 'index'])->middleware('auth');

@@ -146,13 +146,13 @@
                                 <span>Departement</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="table.html" class='sidebar-link'>
+                        <li class="sidebar-item  {{ $page == 'Role' ? 'active' : '' }}  ">
+                            <a href="{{ route('role') }}" class='sidebar-link'>
                                 <i class="bi bi-tag"></i>
-                                <span>Roles</span>
+                                <span>Role</span>
                             </a>
                         </li>
+
 
                         <li class="sidebar-item  ">
                             <a href="table.html" class='sidebar-link'>
