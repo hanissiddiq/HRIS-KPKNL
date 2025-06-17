@@ -62,7 +62,11 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+       $data['page'] = 'Role';
+        $data['judul_page'] = 'Edit Role';
+        $data['role'] = Role::find($id);
+
+        return view('roles.edit', $data);
     }
 
     /**
@@ -70,7 +74,14 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        // Jika Berhasil
+        Role::where('id', $id)->update($validated);
+        return redirect()->route('role')->with('success', 'Role updated successfully.');
     }
 
     /**
