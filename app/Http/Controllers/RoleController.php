@@ -41,7 +41,10 @@ class RoleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data['page'] = 'Role';
+        $data['judul_page'] = 'Detail Role';
+        $data['role'] = Role::find($id);
+        return view('roles.show', $data);
     }
 
     /**

@@ -57,7 +57,6 @@
 
                     <div class="d-flex">
                         <a href="{{ route('role.create') }}" class="btn btn-primary mb-3 ms-auto">Add New Role</a>
-                        {{-- <a href="{{ route('role.create') }}" class="btn btn-primary mb-3 ms-auto">Add New role</a> --}}
                     </div>
                     <table class="table table-striped" id="table1">
                         <thead>
@@ -73,17 +72,10 @@
                             @foreach ($role as $r)
                                 <tr>
                                     <td>{{ $r->title }}</td>
-                                    {{-- <td>{{ $r->description }}</td> --}}
-                                    {{-- <td>{{ $r->assigned_to }}</td> --}}
-
-
-
                                     <td>
-
                                         <a href="{{ route('role.show', $r->id) }}" class="btn btn-outline-primary btn-sm"
                                             data-bs-toggle="tooltip" title="View">
                                             <i class="bi bi-eye"></i>
-
                                         </a>
 
                                         <a href="{{ route('role.edit', $r->id) }}" class="btn btn-outline-success btn-sm"
@@ -100,11 +92,8 @@
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
-
                                     </td>
-                                    {{-- <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td> --}}
+
                                 </tr>
                             @endforeach
 
