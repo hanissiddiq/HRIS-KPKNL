@@ -83,6 +83,7 @@
                                             <i class="bi bi-pencil"></i>
                                         </a>
 
+                                        {{-- <form action="{{ route('role.destroy', $r->id) }}" method="POST" --}}
                                         <form action="{{ route('role.destroy', $r->id) }}" method="POST"
                                             onsubmit="return confirm('Yakin menghapus data?');" class="d-inline">
                                             @csrf
