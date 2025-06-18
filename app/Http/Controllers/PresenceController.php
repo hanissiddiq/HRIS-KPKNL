@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Presence;
+use App\Models\Employee;
 
 class PresenceController extends Controller
 {
@@ -24,7 +25,10 @@ class PresenceController extends Controller
      */
     public function create()
     {
-        //
+        $data['page'] = 'Presence';
+        $data['judul_page'] = 'Presence';
+        $data['employee'] = Employee::all()->sortBy('fullname');;
+        return view('presences.create', $data);
     }
 
     /**
@@ -32,7 +36,17 @@ class PresenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'employee_id' => 'required',
+            'check_in' => 'required',
+            'check_out' => 'required',
+            'date' => 'required|date',
+            'status' => 'required|string',
+        ]);
+
+        //         //Jika Berhasil
+        Presence::create($validated);
+        return redirect()->route('presence')->with('success', 'Presence recorded successfully.');
     }
 
     /**
