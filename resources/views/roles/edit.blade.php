@@ -29,13 +29,13 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">
-                        Add Role
+                        Edit Role
                     </h5>
                 </div>
                 <div class="card-body">
-                    <div class="d-flex">
+                    {{-- <div class="d-flex">
                         <a href="{{ route('role.create') }}" class="btn btn-primary mb-3 ms-auto">Add New Role</a>
-                    </div>
+                    </div> --}}
 
                     <form action="{{ route('role.update', $role->id) }}" method="POST">
                         @csrf

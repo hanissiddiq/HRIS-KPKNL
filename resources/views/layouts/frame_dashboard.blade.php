@@ -153,9 +153,8 @@
                             </a>
                         </li>
 
-
-                        <li class="sidebar-item  ">
-                            <a href="table.html" class='sidebar-link'>
+                        <li class="sidebar-item  {{ $page == 'Presence' ? 'active' : '' }}  ">
+                            <a href="{{ route('presence') }}" class='sidebar-link'>
                                 <i class="bi bi-table"></i>
                                 <span>Presensi</span>
                             </a>
