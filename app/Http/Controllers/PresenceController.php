@@ -26,7 +26,7 @@ class PresenceController extends Controller
     public function create()
     {
         $data['page'] = 'Presence';
-        $data['judul_page'] = 'Presence';
+        $data['judul_page'] = 'Create Presence';
         $data['employee'] = Employee::all()->sortBy('fullname');;
         return view('presences.create', $data);
     }
@@ -54,7 +54,10 @@ class PresenceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data['page'] = 'Presence';
+        $data['judul_page'] = 'Detail Presence';
+        $data['presence'] = Presence::find($id);
+        return view('presences.show', $data);
     }
 
     /**
@@ -63,7 +66,7 @@ class PresenceController extends Controller
     public function edit(string $id)
     {
         $data['page'] = 'Presence';
-        $data['judul_page'] = 'Presence';
+        $data['judul_page'] = 'Edit Presence';
         $data['presence'] = Presence::find($id);
         $data['employee'] = Employee::all()->sortBy('fullname');;
         return view('presences.edit', $data);
