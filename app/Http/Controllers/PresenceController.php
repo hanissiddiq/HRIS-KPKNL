@@ -92,6 +92,7 @@ class PresenceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Presence::destroy($id);
+        return redirect()->route('presence')->with('success', 'Presence deleted successfully.');
     }
 }
