@@ -83,11 +83,11 @@
                                     {{-- <td>{{ strtoupper($p->status) }}</td> --}}
                                     <td>
                                         @if ($p->status == 'absent')
-                                            <span
-                                                class="badge bg-danger">{{ strtoupper($p->status) }}</span>
+                                            <span class="badge bg-danger">{{ strtoupper($p->status) }}</span>
+                                        @elseif ($p->status == 'present')
+                                            <span class="badge bg-success">{{ strtoupper($p->status) }}</span>
                                         @else
-                                            <span
-                                                class="badge bg-success">{{ strtoupper($p->status) }}</span>
+                                            <span class="badge bg-warning">{{ strtoupper($p->status) }}</span>
                                         @endif
                                     </td>
 

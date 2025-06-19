@@ -62,7 +62,11 @@ class PresenceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['page'] = 'Presence';
+        $data['judul_page'] = 'Presence';
+        $data['presence'] = Presence::find($id);
+        $data['employee'] = Employee::all()->sortBy('fullname');;
+        return view('presences.edit', $data);
     }
 
     /**
@@ -70,7 +74,17 @@ class PresenceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'employee_id' => 'required',
+            'check_in' => 'required',
+            'check_out' => 'required',
+            'date' => 'required|date',
+            'status' => 'required|string',
+        ]);
+
+        //         //Jika Berhasil
+        Presence::where('id', $id)->update($validated);
+        return redirect()->route('presence')->with('success', 'Presence update successfully.');
     }
 
     /**

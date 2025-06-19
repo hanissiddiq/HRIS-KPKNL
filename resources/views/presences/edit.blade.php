@@ -19,7 +19,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="{{ url('presence') }}">{{ $page }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Create</li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit</li>
                         </ol>
                     </nav>
                 </div>
@@ -29,7 +29,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">
-                        Add Presence
+                        Edit Presence
                     </h5>
                 </div>
                 <div class="card-body">
@@ -37,14 +37,15 @@
                         <a href="{{ route('presence.create') }}" class="btn btn-primary mb-3 ms-auto">Add New presence</a>
                     </div> --}}
 
-                    <form action="{{ route('presence.store') }}" method="POST">
+                    <form action="{{ route('presence.update', $presence->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="mb-1">
                             <label for="employee_id" class="form-label">Employee</label>
                             <select class="form-control" name="employee_id" id="status">
                                 <option>=== Pilih Karyawan ===</option>
                                 @foreach ($employee as $e)
-                                    <option value="{{ $e->id }}">{{ ucwords($e->fullname) }}</option>
+                                    <option value="{{ $e->id }}" {{ ($e->id == $presence->employee_id) ? 'selected' : ''}}>    {{ ucwords($e->fullname) }}</option>
                                 @endforeach
                             </select>
 
@@ -55,7 +56,7 @@
                         <div class="mb-1">
                             <label for="check_in" class="form-label">Check In</label>
                             <input type="text" class="form-control datetime" name="check_in" id="check_in"
-                           placeholder="2025-08-20 08:00:0"  required>
+                           placeholder="2025-08-20 08:00:0"  required value="{{ old('check_in', $presence->check_in) }}">
                             @error('check_in')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -63,7 +64,7 @@
                         <div class="mb-1">
                             <label for="check_out" class="form-label">Check Out</label>
                             <input type="text" class="form-control datetime" name="check_out" id="check_out"
-                            placeholder="2025-08-20 17:00:0" required>
+                            placeholder="2025-08-20 17:00:0" required value="{{ old('check_out', $presence->check_out) }}">
                             @error('check_out')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -71,7 +72,7 @@
                         <div class="mb-1">
                             <label for="date" class="form-label">Date</label>
                             <input type="text" class="form-control date" name="date" id="date"
-                            laceholder="2025-08-20" required>
+                            laceholder="2025-08-20" required value="{{ old('date', $presence->date) }}">
                             @error('date')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -79,9 +80,9 @@
                         <div class="mb-1">
                             <label for="status" class="form-label">Status</label>
                             <select class="form-control" name="status" id="status" >
-                                <option value="present">Present</option>
-                                <option value="absent">Absent</option>
-                                <option value="leave">Leave</option>
+                                <option value="present" {{ ($presence->status == 'present') ? 'selected' : '' }} >Present</option>
+                                <option value="absent" {{ ($presence->status == 'absent') ? 'selected' : '' }}  >Absent</option>
+                                <option value="leave" {{ ($presence->status == 'leave') ? 'selected' : '' }} >Leave</option>
                             </select>
                             @error('status')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -93,7 +94,7 @@
 
                         <div class="mb-1">
                             <div class="mt-3">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                                 <button class="btn btn-secondary"
                                     onclick="window.history.go(-1); return false;">Back</button>
                             </div>
