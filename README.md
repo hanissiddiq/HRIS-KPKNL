@@ -6,21 +6,21 @@
 Aplikasi HR Management yang mengatur absen, pegawai, penggajian Berbasis Laravel 12
 
 Untuk jalanin nya 
-1. Install ``PHP 8.2 atau 8.3``
+1. Install ***``PHP 8.2 atau 8.3``***
 2. Install Composer
 3. Buka VSCODE & buka project nya
-4. Ubah file ``.env_asli`` jadi ke .env dan hapus isian ``DB_Password``
+4. Ubah file ***``.env_asli``*** jadi ke .env dan hapus isian ``DB_Password``
 5. Buka Terminal vscode
 6. Jalankan perintah composer install sampai muncul folder ``vendor``
 7. Jalankan apache & Mysql di Xampp atau Laragon kemudian akses PHPMYADMIN
-8. Buatlah Database kosong dengan nama ``db_hris_kpknl``
+8. Buatlah Database kosong dengan nama ***``db_hris_kpknl``***
 9. jalankan ``php artisan storage:link`` untuk membaca source gambar yang tidak muncul
-10. Jalankan perintah ``php artisan migrate:fresh --seed --seeder=HumanResourceSeeder`` di terminal vscode atau untuk mengisi data dummy di database ``php artisan db:seed``
+10. Jalankan perintah ***``php artisan migrate:fresh --seed --seeder=HumanResourceSeeder``*** di terminal vscode atau untuk mengisi data dummy di database ***``php artisan db:seed``***
 11. Jalankan perintah ``php artisan serve``
-12. Buka http://127.0.0.1:8000/ di browser
+12. Buka ***http://127.0.0.1:8000/*** di browser
 
-</br> Username : admin@hris.com
-</br> pass : mantap
+</br> Username : ***admin@hris.com***
+</br> pass : ***mantap***
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 

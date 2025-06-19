@@ -12,8 +12,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        
-       
+
+
         Schema::create('departements', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -80,8 +80,8 @@ return new class extends Migration {
             $table->id();
 
             $table->foreignId('employee_id')->constrained('employees');
-            $table->date('check_in');
-            $table->date('check_out');
+            $table->datetime('check_in');
+            $table->datetime('check_out');
             $table->date('date');
             $table->string('status');
             $table->timestamps();

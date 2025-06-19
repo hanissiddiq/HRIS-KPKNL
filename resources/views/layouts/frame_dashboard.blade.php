@@ -26,7 +26,9 @@
     <link rel="stylesheet" crossorigin href="{{ asset('mazer/dist/assets/extensions/simple-datatables/style.css') }}">
     <link rel="stylesheet" crossorigin href="{{ asset('mazer/dist/assets/compiled/css/table-datatable.css') }}">
     <link rel="stylesheet" crossorigin href="{{ asset('mazer/dist/assets/extensions/table-datatable.css') }}">
-    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpicker.min.css">
+    {{-- <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpicker.min.css"> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 
 
 </head>
@@ -153,9 +155,8 @@
                             </a>
                         </li>
 
-
-                        <li class="sidebar-item  ">
-                            <a href="table.html" class='sidebar-link'>
+                        <li class="sidebar-item  {{ $page == 'Presence' ? 'active' : '' }}  ">
+                            <a href="{{ route('presence') }}" class='sidebar-link'>
                                 <i class="bi bi-table"></i>
                                 <span>Presensi</span>
                             </a>
@@ -193,7 +194,8 @@
                         </li> --}}
 
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link d-flex align-items-center px-3 py-2 text-start btn btn-outline-danger"
+                            <a href="#"
+                                class="sidebar-link d-flex align-items-center px-3 py-2 text-start btn btn-outline-danger"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="bi bi-box-arrow-right me-2"></i>
                                 <span>Log Out</span>
@@ -259,17 +261,21 @@
 
     {{-- dibutuhkan untuk flatpickr date --}}
 
-    {{-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> --}}
-    {{-- <script>
-       let dateTime = flatpickr('.datetime', {
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        let date = flatpickr('.date', {
             dateFormat: "Y-m-d",
+                    });
+
+        let dateTime = flatpickr('.datetime', {
+            dateFormat: "Y-m-d H:i:s",
             enableTime: true,
             // allowInput: true,
             // altInput: true,
             // altFormat: "F j, Y",
             // defaultDate: "today",
         });
-    </script> --}}
+    </script>
 
 </body>
 

@@ -33,9 +33,9 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <div class="d-flex">
+                    {{-- <div class="d-flex">
                         <a href="{{ route('role.create') }}" class="btn btn-primary mb-3 ms-auto">Add New Role</a>
-                    </div>
+                    </div> --}}
 
                     <form action="{{ route('role.store') }}" method="POST">
                         @csrf

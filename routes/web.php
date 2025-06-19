@@ -6,6 +6,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PresenceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -59,6 +60,15 @@ Route::post('/role', [RoleController::class, 'store'])->name('role.store');
 Route::delete('/role/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
 Route::get('/role/detail/{id}', [RoleController::class, 'edit'])->name('role.edit');
 Route::put('/role/detail/{id}', [RoleController::class, 'update'])->name('role.update');
+
+// Handling rute untuk presence
+Route::get('/presence', [PresenceController::class, 'index'])->name('presence');
+Route::get('/presence/show/{id}', [PresenceController::class, 'show'])->name('presence.show');
+Route::get('/presence/create', [PresenceController::class, 'create'])->name('presence.create');
+Route::post('/presence', [PresenceController::class, 'store'])->name('presence.store');
+Route::delete('/presence/{id}', [PresenceController::class, 'destroy'])->name('presence.destroy');
+Route::get('/presence/detail/{id}', [PresenceController::class, 'edit'])->name('presence.edit');
+Route::put('/presence/detail/{id}', [PresenceController::class, 'update'])->name('presence.update');
 
 
 // Route::get('/laundry', [LaundryController::class, 'index'])->middleware('auth');
