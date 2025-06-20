@@ -53,4 +53,35 @@ class PayrollController extends Controller
         return redirect()->route('payroll')->with('success', 'Payroll created successfully.');
     }
 
+    public function edit(string $id)
+    {
+        $data['page'] = 'Payroll';
+        $data['judul_page'] = 'Edit Payroll';
+        $data['payroll'] = Payroll::find($id);
+        $data['employee'] = Employee::all()->sortBy('fullname');;
+        return view('payrolls.edit', $data);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $validated = $request->validate([
+            'employee_id' => 'required',
+            'salary' => 'required|numeric',
+            'bonuses' => 'nullable|numeric',
+            'deductions' => 'nullable|numeric',
+            'net_salary' => 'nullable|numeric',
+            'pay_date' => 'required|date',
+        ]);
+
+        $netSalary = $validated['salary'] + ($validated['bonuses'] ?? 0) - ($validated['deductions'] ?? 0);
+        $validated['net_salary'] = $netSalary;
+
+        //         //Jika Berhasil
+        Payroll::where('id', $id)->update($validated);
+        return redirect()->route('payroll')->with('success', 'Payroll update successfully.');
+    }
+
 }

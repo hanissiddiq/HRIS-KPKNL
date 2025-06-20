@@ -39,9 +39,6 @@
                         </div>
 
                     @endif
-                    <div class="d-flex">
-                        <a href="{{ route('task.create') }}" class="btn btn-primary mb-3 ms-auto">Add New Task</a>
-                    </div>
 
                     <form action="{{ route('task.update', $task->id) }}" method="POST">
                         @csrf

@@ -37,6 +37,17 @@
                         <a href="{{ route('departement.create') }}" class="btn btn-primary mb-3 ms-auto">Add New Departement</a>
                     </div>
 
+                       @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                    @endif
+
                     <form action="{{ route('departement.store') }}" method="POST">
                         @csrf
                         <div class="mb-1">
