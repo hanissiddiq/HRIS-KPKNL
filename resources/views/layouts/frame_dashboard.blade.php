@@ -162,12 +162,19 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item  ">
-                            <a href="table.html" class='sidebar-link'>
+                        <li class="sidebar-item  {{ $page == 'Payroll' ? 'active' : '' }}  ">
+                            <a href="{{ route('payroll') }}" class='sidebar-link'>
                                 <i class="bi bi-currency-dollar"></i>
                                 <span>Penggajian Karyawan</span>
                             </a>
                         </li>
+
+                        {{-- <li class="sidebar-item  ">
+                            <a href="table.html" class='sidebar-link'>
+                                <i class="bi bi-currency-dollar"></i>
+                                <span>Penggajian Karyawan</span>
+                            </a>
+                        </li> --}}
 
                         <li class="sidebar-item  ">
                             <a href="table.html" class='sidebar-link'>

@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PresenceController;
+use App\Http\Controllers\PayrollController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -69,6 +70,16 @@ Route::post('/presence', [PresenceController::class, 'store'])->name('presence.s
 Route::delete('/presence/{id}', [PresenceController::class, 'destroy'])->name('presence.destroy');
 Route::get('/presence/detail/{id}', [PresenceController::class, 'edit'])->name('presence.edit');
 Route::put('/presence/detail/{id}', [PresenceController::class, 'update'])->name('presence.update');
+
+// Handling rute untuk presence
+Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll');
+Route::get('/payroll/show/{id}', [PayrollController::class, 'show'])->name('payroll.show');
+Route::get('/payroll/create', [PayrollController::class, 'create'])->name('payroll.create');
+Route::post('/payroll', [PayrollController::class, 'store'])->name('payroll.store');
+Route::delete('/payroll/{id}', [PayrollController::class, 'destroy'])->name('payroll.destroy');
+Route::get('/payroll/detail/{id}', [PayrollController::class, 'edit'])->name('payroll.edit');
+Route::put('/payroll/detail/{id}', [PayrollController::class, 'update'])->name('payroll.update');
+
 
 
 // Route::get('/laundry', [LaundryController::class, 'index'])->middleware('auth');
