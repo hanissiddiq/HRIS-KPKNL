@@ -84,4 +84,10 @@ class PayrollController extends Controller
         return redirect()->route('payroll')->with('success', 'Payroll update successfully.');
     }
 
+    public function destroy(string $id)
+    {
+        Payroll::destroy($id);
+        return redirect()->route('payroll')->with('success', 'Payroll deleted successfully.');
+    }
+
 }
