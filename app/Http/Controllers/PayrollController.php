@@ -84,6 +84,18 @@ class PayrollController extends Controller
         return redirect()->route('payroll')->with('success', 'Payroll update successfully.');
     }
 
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $data['page'] = 'Payroll';
+        $data['judul_page'] = 'Detail Payroll';
+        $data['employee'] = Employee::all();
+        $data['payroll'] = Payroll::find($id);
+        return view('payrolls.show', $data);
+    }
+
     public function destroy(string $id)
     {
         Payroll::destroy($id);
