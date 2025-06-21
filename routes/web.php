@@ -80,6 +80,11 @@ Route::delete('/payroll/{id}', [PayrollController::class, 'destroy'])->name('pay
 Route::get('/payroll/detail/{id}', [PayrollController::class, 'edit'])->name('payroll.edit');
 Route::put('/payroll/detail/{id}', [PayrollController::class, 'update'])->name('payroll.update');
 
+//Cetak PDF via LaravelDomPDF
+// Route::get('/slip-gaji/cetak', [PayrollController::class, 'cetakPDF'])->name('payroll.cetakPDF');
+Route::get('/payrolls/{id}/cetak-pdf', [PayrollController::class, 'cetakPDF'])->name('payroll.cetakPDF');
+
+
 
 
 // Route::get('/laundry', [LaundryController::class, 'index'])->middleware('auth');

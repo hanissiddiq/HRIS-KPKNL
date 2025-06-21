@@ -73,6 +73,7 @@
                             <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Back</button>
                             <button type="button" id="btn-print" class="btn btn-primary"><span class="bi bi-printer">
                                 </span>Print </button>
+                            <a href="{{ route('payroll.cetakPDF', $payroll->id) }}" class="btn btn-warning text-white" target="_blank"><span class="bi bi-file-pdf"> </span>PDF</a>
                         </div>
                     </div>
                 </div>
@@ -99,6 +100,7 @@
     </footer>
 
     <script>
+        // Fungsi Print 
         document.getElementById('btn-print').addEventListener('click', function() {
             let printContent = document.querySelector('.print-area');
             let originalContent = document.body.innerHTML;
