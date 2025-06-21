@@ -11,14 +11,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Presences</h3>
-                    <p class="text-subtitle text-muted">Handle Employee Presences.</p>
+                    <h3>Payrolls</h3>
+                    <p class="text-subtitle text-muted">Handle Employee Payrolls.</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="{{ url('presence') }}">{{ $page }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('payroll') }}">{{ $page }}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Create</li>
                         </ol>
                     </nav>
@@ -29,15 +29,15 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">
-                        Add Presence
+                        Add Payroll
                     </h5>
                 </div>
                 <div class="card-body">
                     {{-- <div class="d-flex">
-                        <a href="{{ route('presence.create') }}" class="btn btn-primary mb-3 ms-auto">Add New presence</a>
+                        <a href="{{ route('payroll.create') }}" class="btn btn-primary mb-3 ms-auto">Add New payroll</a>
                     </div> --}}
 
-                    @if ($errors->any())
+                       @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -48,7 +48,7 @@
 
                     @endif
 
-                    <form action="{{ route('presence.store') }}" method="POST">
+                    <form action="{{ route('payroll.store') }}" method="POST">
                         @csrf
                         <div class="mb-1">
                             <label for="employee_id" class="form-label">Employee</label>
@@ -64,42 +64,45 @@
                             @enderror
                         </div>
                         <div class="mb-1">
-                            <label for="check_in" class="form-label">Check In</label>
-                            <input type="text" class="form-control datetime" name="check_in" id="check_in"
-                           placeholder="2025-08-20 08:00:0"  required>
-                            @error('check_in')
+                            <label for="salary" class="form-label">Salary</label>
+                            <input type="number" class="form-control" name="salary" id="salary"
+                           placeholder="3800500"  required>
+                            @error('salary')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-1">
-                            <label for="check_out" class="form-label">Check Out</label>
-                            <input type="text" class="form-control datetime" name="check_out" id="check_out"
-                            placeholder="2025-08-20 17:00:0" required>
-                            @error('check_out')
+                            <label for="bonuses" class="form-label">Bonuses</label>
+                            <input type="number" class="form-control" name="bonuses" id="bonuses"
+                            placeholder="150000">
+                            @error('bonuses')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-1">
-                            <label for="date" class="form-label">Date</label>
-                            <input type="text" class="form-control date" name="date" id="date"
+                            <label for="deductions" class="form-label">Deductions</label>
+                            <input type="number" class="form-control" name="deductions" id="deductions"
+                            placeholder="150000">
+                            @error('deductions')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-1">
+                            <label for="net_salary" class="form-label">Net Salary</label>
+                            <input type="number" class="form-control" name="net_salary" id="net_salary" disabled
+                            placeholder="150000">
+                            @error('net_salary')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-1">
+                            <label for="pay_date" class="form-label">Pay Date</label>
+                            <input type="text" class="form-control date" name="pay_date" id="pay_date"
                             laceholder="2025-08-20" required>
-                            @error('date')
+                            @error('pay_date')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="mb-1">
-                            <label for="status" class="form-label">Status</label>
-                            <select class="form-control" name="status" id="status" >
-                                <option value="present">Present</option>
-                                <option value="absent">Absent</option>
-                                <option value="leave">Leave</option>
-                            </select>
-                            @error('status')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-
 
 
                         <div class="mb-1">

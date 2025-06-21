@@ -162,12 +162,19 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item  ">
-                            <a href="table.html" class='sidebar-link'>
+                        <li class="sidebar-item  {{ $page == 'Payroll' ? 'active' : '' }}  ">
+                            <a href="{{ route('payroll') }}" class='sidebar-link'>
                                 <i class="bi bi-currency-dollar"></i>
                                 <span>Penggajian Karyawan</span>
                             </a>
                         </li>
+
+                        {{-- <li class="sidebar-item  ">
+                            <a href="table.html" class='sidebar-link'>
+                                <i class="bi bi-currency-dollar"></i>
+                                <span>Penggajian Karyawan</span>
+                            </a>
+                        </li> --}}
 
                         <li class="sidebar-item  ">
                             <a href="table.html" class='sidebar-link'>
@@ -265,7 +272,7 @@
     <script>
         let date = flatpickr('.date', {
             dateFormat: "Y-m-d",
-                    });
+        });
 
         let dateTime = flatpickr('.datetime', {
             dateFormat: "Y-m-d H:i:s",
@@ -275,6 +282,30 @@
             // altFormat: "F j, Y",
             // defaultDate: "today",
         });
+    </script>
+    <script>
+        // Elemen input
+        const salaryEl = document.getElementById('salary');
+        const bonusEl = document.getElementById('bonuses');
+        const deductEl = document.getElementById('deductions');
+        const netSalaryEl = document.getElementById('net_salary');
+
+        // Fungsi kalkulasi
+        function calculateNetSalary() {
+            const salary = parseFloat(salaryEl.value) || 0;
+            const bonus = parseFloat(bonusEl.value) || 0;
+            const deduct = parseFloat(deductEl.value) || 0;
+            const net = salary + bonus - deduct;
+            netSalaryEl.value = net;
+        }
+
+        // Event listener supaya realtime saat input berubah
+        [salaryEl, bonusEl, deductEl].forEach(el =>
+            el.addEventListener('input', calculateNetSalary)
+        );
+
+        // Initial calculate jika input sudah ada nilai awal
+        calculateNetSalary();
     </script>
 
 </body>

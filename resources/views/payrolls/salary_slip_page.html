@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Slip</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .salary-slip {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .company-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .employee-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background: #f9f9f9;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .info-block {
+            flex: 1;
+            padding: 0 10px;
+        }
+        
+        .info-block h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 5px;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            width: 120px;
+        }
+        
+        .info-value {
+            flex: 1;
+        }
+        
+        .salary-details {
+            display: flex;
+            padding: 20px;
+        }
+        
+        .earnings, .deductions {
+            flex: 1;
+            padding: 0 15px;
+        }
+        
+        .earnings {
+            border-right: 1px solid #eee;
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .salary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .salary-item {
+            font-weight: 500;
+        }
+        
+        .salary-amount {
+            font-weight: 600;
+        }
+        
+        .total {
+            background: #f9f9f9;
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .net-pay {
+            color: #27ae60;
+        }
+        
+        .footer {
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #7f8c8d;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+        
+        .signature {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .signature-block {
+            text-align: center;
+            width: 45%;
+        }
+        
+        .signature-line {
+            border-top: 1px solid #333;
+            width: 80%;
+            margin: 10px auto;
+            padding-top: 5px;
+        }
+        
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            
+            .salary-slip {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="salary-slip">
+        <div class="header">
+            <h1>SALARY SLIP</h1>
+            <div class="company-logo">LOGO</div>
+            <p>For the month of <strong>June 2023</strong></p>
+        </div>
+        
+        <div class="employee-info">
+            <div class="info-block">
+                <h3>Employee Details</h3>
+                <div class="info-row">
+                    <div class="info-label">Name:</div>
+                    <div class="info-value">John Doe</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Employee ID:</div>
+                    <div class="info-value">EMP-2023-001</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Department:</div>
+                    <div class="info-value">Software Development</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Designation:</div>
+                    <div class="info-value">Senior Developer</div>
+                </div>
+            </div>
+            
+            <div class="info-block">
+                <h3>Payment Details</h3>
+                <div class="info-row">
+                    <div class="info-label">Bank Name:</div>
+                    <div class="info-value">ABC Bank</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Account No:</div>
+                    <div class="info-value">XXXXXX7890</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">PAN No:</div>
+                    <div class="info-value">ABCDE1234F</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Pay Date:</div>
+                    <div class="info-value">05-Jul-2023</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="salary-details">
+            <div class="earnings">
+                <h3 class="section-title">Earnings</h3>
+                <div class="salary-row">
+                    <div class="salary-item">Basic Salary</div>
+                    <div class="salary-amount">$4,500.00</div>
+                </div>
+                <div class="salary-row">
+                    <div class="salary-item">House Rent Allowance</div>
+                    <div class="salary-amount">$1,800.00</div>
+                </div>
+                <div class="salary-row">
+                    <div class="salary-item">Transport Allowance</div>
+                    <div class="salary-amount">$500.00</div>
+                </div>
+                <div class="salary-row">
+                    <div class="salary-item">Medical Allowance</div>
+                    <div class="salary-amount">$300.00</div>
+                </div>
+                <div class="salary-row">
+                    <div class="salary-item">Special Allowance</div>
+                    <div class="salary-amount">$700.00</div>
+                </div>
+                <div class="salary-row">
+                    <div class="salary-item">Bonus</div>
+                    <div class="salary-amount">$1,000.00</div>
+                </div>
+            </div>
+            
+            <div class="deductions">
+                <h3 class="section-title">Deductions</h3>
+                <div class="salary-row">
+                    <div class="salary-item">Provident Fund</div>
+                    <div class="salary-amount">$540.00</div>
+                </div>
+                <div class="salary-row">
+                    <div class="info-label">Professional Tax</div>
+                    <div class="info-value">$200.00</div>
+                </div>
+                <div class="salary-row">
+                    <div class="salary-item">Income Tax</div>
+                    <div class="salary-amount">$1,200.00</div>
+                </div>
+                <div class="salary-row">
+                    <div class="salary-item">Loan EMI</div>
+                    <div class="salary-amount">$800.00</div>
+                </div>
+                <div class="salary-row">
+                    <div class="salary-item">Late Attendance</div>
+                    <div class="salary-amount">$50.00</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="total">
+            <div>Total Earnings: <span>$8,800.00</span></div>
+            <div>Total Deductions: <span>$2,790.00</span></div>
+            <div>Net Pay: <span class="net-pay">$6,010.00</span></div>
+        </div>
+        
+        <div class="signature">
+            <div class="signature-block">
+                <div class="signature-line"></div>
+                <div>Employee Signature</div>
+            </div>
+            <div class="signature-block">
+                <div class="signature-line"></div>
+                <div>Authorized Signatory</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>This is computer generated document and does not require signature</p>
+            <p>For any queries, please contact HR Department</p>
+        </div>
+    </div>
+</body>
+</html>
