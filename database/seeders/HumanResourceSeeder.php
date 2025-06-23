@@ -209,7 +209,7 @@ class HumanResourceSeeder extends Seeder
                 'leave_type' => $faker->randomElement(['Cuti Tahunan', 'Cuti Sakit', 'Cuti Melahirkan', 'Cuti Besar', 'Cuti Alasan Penting', 'Cuti Ibadah', 'Cuti di Luar Tanggungan Negara']),
                 'start_date' => Carbon::parse('2025-04-01'),
                 'end_date' => Carbon::parse('2025-04-05'),
-                'status' => $faker->randomElement(['approved', 'pending']),
+                'status' => $faker->randomElement(['approved', 'pending', 'rejected']),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

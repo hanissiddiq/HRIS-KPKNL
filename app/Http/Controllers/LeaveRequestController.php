@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Employee;
 use App\Models\LeaveRequest;
 
 class LeaveRequestController extends Controller
@@ -24,7 +25,11 @@ class LeaveRequestController extends Controller
      */
     public function create()
     {
-        //
+        $data['page']       = 'Leave Requests';
+        $data['judul_page'] = 'Create Leave Request';
+        $data['employee'] = Employee::all()->sortBy('fullname');;
+
+        return view('leaves.create', $data);
     }
 
     /**
@@ -32,7 +37,17 @@ class LeaveRequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $validated = $request->validate([
+            'employee_id' => 'required',
+            'leave_type' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'status' => 'required|string',
+            ]);
+
+        //         //Jika Berhasil
+        LeaveRequest::create($validated);
+        return redirect()->route('leave-request')->with('success', 'Leave created successfully.');
     }
 
     /**

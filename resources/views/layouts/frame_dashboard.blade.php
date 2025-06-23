@@ -168,7 +168,7 @@
                                 <span>Penggajian Karyawan</span>
                             </a>
                         </li>
-                        <li class="sidebar-item  {{ $page == 'Leave Request' ? 'active' : '' }}  ">
+                        <li class="sidebar-item  {{ $page == 'Leave Requests' ? 'active' : '' }}  ">
                             <a href="{{ route('leave-request') }}" class='sidebar-link'>
                                 <i class="bi bi-shift-fill"></i>
                                 <span>Pengajuan Cuti</span>
