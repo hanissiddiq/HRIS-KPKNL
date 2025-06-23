@@ -63,7 +63,11 @@ class LeaveRequestController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['page'] = 'Leave Requests';
+        $data['judul_page'] = 'Edit Leave Request';
+        $data['leave'] = LeaveRequest::find($id);
+        $data['employee'] = Employee::all()->sortBy('fullname');;
+        return view('leaves.edit', $data);
     }
 
     /**
@@ -71,7 +75,17 @@ class LeaveRequestController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'employee_id' => 'required',
+            'leave_type' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'status' => 'required|string',
+            ]);
+
+        //         //Jika Berhasil
+        LeaveRequest::where('id', $id)->update($validated);
+        return redirect()->route('leave-request')->with('success', 'Leave updated successfully.');
     }
 
     /**
