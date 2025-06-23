@@ -168,20 +168,14 @@
                                 <span>Penggajian Karyawan</span>
                             </a>
                         </li>
-
-                        {{-- <li class="sidebar-item  ">
-                            <a href="table.html" class='sidebar-link'>
-                                <i class="bi bi-currency-dollar"></i>
-                                <span>Penggajian Karyawan</span>
-                            </a>
-                        </li> --}}
-
-                        <li class="sidebar-item  ">
-                            <a href="table.html" class='sidebar-link'>
+                        <li class="sidebar-item  {{ $page == 'Leave Request' ? 'active' : '' }}  ">
+                            <a href="{{ route('leave-request') }}" class='sidebar-link'>
                                 <i class="bi bi-shift-fill"></i>
                                 <span>Pengajuan Cuti</span>
                             </a>
                         </li>
+
+
                         {{-- <li class="sidebar-item  ">
                             <a href="{{url('/logout')}}" class='sidebar-link'>
                                 <i class="bi bi-shift-fill"></i>
