@@ -93,6 +93,7 @@ class LeaveRequestController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        LeaveRequest::destroy($id);
+        return redirect()->route('leave-request')->with('success', 'Leave deleted successfully.');
     }
 }
