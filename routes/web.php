@@ -18,10 +18,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::resource('/employee', EmployeeController::class)->name('employee');
-// ('/task', [TaskController::class, 'index'])->name('task');
-// Route::resource('/task', [TaskController::class, 'index'])->name('employee');
-// Route::resource('/employee', [EmployeeController::class])->name('employee');
+
 
 Route::get('/task/done/{id}', [TaskController::class, 'done'])->name('task.done');
 Route::get('/task/pending/{id}', [TaskController::class, 'pending'])->name('task.pending');
@@ -93,19 +90,10 @@ Route::post('/leave-request', [LeaveRequestController::class, 'store'])->name('l
 Route::delete('/leave-request/{id}', [LeaveRequestController::class, 'destroy'])->name('leave-request.destroy');
 Route::get('/leave-request/detail/{id}', [LeaveRequestController::class, 'edit'])->name('leave-request.edit');
 Route::put('/leave-request/detail/{id}', [LeaveRequestController::class, 'update'])->name('leave-request.update');
+Route::get('/leave-request/confirm/{id}', [LeaveRequestController::class, 'confirm'])->name('leave-request.confirm');
+Route::get('/leave-request/reject/{id}', [LeaveRequestController::class, 'reject'])->name('leave-request.reject');
 
 
-
-
-// Route::get('/laundry', [LaundryController::class, 'index'])->middleware('auth');
-// Route::get('/laundry/add', [LaundryController::class, 'create'])->middleware('auth');
-// Route::post('/laundry', [LaundryController::class, 'store'])->middleware('auth');
-// Route::get('/laundry/{id}', [LaundryController::class, 'destroy'])->middleware('auth');
-// Route::get('/laundry/detail/{id}', [LaundryController::class, 'edit'])->middleware('auth');
-// Route::put('/laundry/{id}', [LaundryController::class, 'update'])->middleware('auth');
-
-// Route::get('/task', [TaskController::class, 'create'])->name('task.create');
-// Route::get('/task', [TaskController::class, 'store'])->name('task.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -114,3 +102,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+

@@ -25,9 +25,9 @@ class LeaveRequestController extends Controller
      */
     public function create()
     {
-        $data['page']       = 'Leave Requests';
+        $data['page'] = 'Leave Requests';
         $data['judul_page'] = 'Create Leave Request';
-        $data['employee'] = Employee::all()->sortBy('fullname');;
+        $data['employee'] = Employee::all()->sortBy('fullname');
 
         return view('leaves.create', $data);
     }
@@ -37,13 +37,13 @@ class LeaveRequestController extends Controller
      */
     public function store(Request $request)
     {
-       $validated = $request->validate([
+        $validated = $request->validate([
             'employee_id' => 'required',
             'leave_type' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
             'status' => 'required|string',
-            ]);
+        ]);
 
         //         //Jika Berhasil
         LeaveRequest::create($validated);
@@ -66,7 +66,7 @@ class LeaveRequestController extends Controller
         $data['page'] = 'Leave Requests';
         $data['judul_page'] = 'Edit Leave Request';
         $data['leave'] = LeaveRequest::find($id);
-        $data['employee'] = Employee::all()->sortBy('fullname');;
+        $data['employee'] = Employee::all()->sortBy('fullname');
         return view('leaves.edit', $data);
     }
 
@@ -81,7 +81,7 @@ class LeaveRequestController extends Controller
             'start_date' => 'required',
             'end_date' => 'required',
             'status' => 'required|string',
-            ]);
+        ]);
 
         //         //Jika Berhasil
         LeaveRequest::where('id', $id)->update($validated);
@@ -95,5 +95,16 @@ class LeaveRequestController extends Controller
     {
         LeaveRequest::destroy($id);
         return redirect()->route('leave-request')->with('success', 'Leave deleted successfully.');
+    }
+
+    public function confirm(int $id) {
+        $leaveRequest = LeaveRequest::findOrFail($id);
+        $leaveRequest->update(['status' => 'approved']);
+        return redirect()->route('leave-request')->with('success', 'Leave request approved successfully.');
+    }
+    public function reject(int $id) {
+        $leaveRequest = LeaveRequest::findOrFail($id);
+        $leaveRequest->update(['status' => 'rejected']);
+        return redirect()->route('leave-request')->with('success', 'Leave request rejected successfully.');
     }
 }

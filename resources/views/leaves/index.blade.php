@@ -84,27 +84,32 @@
 
                                     <td>
                                         @if ($l->status == 'pending')
-                                            <span
-                                                class="badge bg-warning text-white">{{ strtoupper($l->status) }}</span>
+                                            <span class="badge bg-warning text-white">{{ strtoupper($l->status) }}</span>
                                         @elseif ($l->status == 'approved')
-                                            <span
-                                                class="badge bg-success text-white">{{ strtoupper($l->status) }}</span>
+                                            <span class="badge bg-success text-white">{{ strtoupper($l->status) }}</span>
                                         @else
-                                            <span
-                                                class="badge bg-danger text-white">{{ strtoupper($l->status) }}</span>
+                                            <span class="badge bg-danger text-white">{{ strtoupper($l->status) }}</span>
                                         @endif
                                     </td>
 
 
                                     <td>
+                                        @if ($l->status == 'pending' || $l->status == 'rejected')
+                                            <a href="{{ route('leave-request.confirm', $l->id) }}"
+                                                class="btn btn-success btn-sm" data-bs-toggle="tooltip" title="View">
+                                                <i class="bi bi-check2-square"> </i>Confirm
+                                            </a>
+                                        @else
+                                            <a href="{{ route('leave-request.reject', $l->id) }}"
+                                                class="btn btn-danger btn-sm" data-bs-toggle="tooltip" title="View">
+                                                <i class="bi bi-x-square"> </i>Rejected
+                                            </a>
+                                        @endif
 
-                                        <a href="{{ route('leave-request.show', $l->id) }}" class="btn btn-outline-primary btn-sm"
-                                            data-bs-toggle="tooltip" title="View">
-                                            <i class="bi bi-eye"></i>
-                                        </a>
 
-                                        <a href="{{ route('leave-request.edit', $l->id) }}" class="btn btn-outline-success btn-sm"
-                                            data-bs-toggle="tooltip" title="Edit">
+
+                                        <a href="{{ route('leave-request.edit', $l->id) }}"
+                                            class="btn btn-outline-success btn-sm" data-bs-toggle="tooltip" title="Edit">
                                             <i class="bi bi-pencil"></i>
                                         </a>
 
