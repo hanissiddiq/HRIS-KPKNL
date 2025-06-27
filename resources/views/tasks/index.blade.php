@@ -56,7 +56,10 @@
 
 
                     <div class="d-flex">
-                        <a href="{{ route('task.create') }}" class="btn btn-primary mb-3 ms-auto">Add New Task</a>
+                        @if (session('role') == 'Admin' || session('role') == 'HRD' ||  session('role') == 'Manager')
+                            <a href="{{ route('task.create') }}" class="btn btn-primary mb-3 ms-auto">Add New Task</a>
+                        @endif
+
                         {{-- <a href="{{ route('task.create') }}" class="btn btn-primary mb-3 ms-auto">Add New Task</a> --}}
                     </div>
                     <table class="table table-striped" id="table1">
@@ -101,8 +104,7 @@
                                                     <i class="bi bi-check-circle me-1"></i> Done
                                                 </a>
                                             @else
-     
-                                            <a href="{{ route('task.pending', $t->id) }}"
+                                                <a href="{{ route('task.pending', $t->id) }}"
                                                     class="btn btn-outline-warning btn-sm" data-bs-toggle="tooltip"
                                                     title="Mark As Pending">
                                                     <i class="bi bi-hourglass-split me-1"></i> Pending
@@ -114,23 +116,28 @@
                                         <a href="{{ route('task.show', $t->id) }}" class="btn btn-outline-primary btn-sm"
                                             data-bs-toggle="tooltip" title="View">
                                             <i class="bi bi-eye"></i>
-                   
+
                                         </a>
 
-                                        <a href="{{ route('task.edit', $t->id) }}" class="btn btn-outline-success btn-sm"
-                                            data-bs-toggle="tooltip" title="Edit">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
+                                        @if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager')
+                                            <a href="{{ route('task.edit', $t->id) }}"
+                                                class="btn btn-outline-success btn-sm" data-bs-toggle="tooltip"
+                                                title="Edit">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
 
-                                        <form action="{{ route('task.destroy', $t->id) }}" method="POST"
-                                            onsubmit="return confirm('Yakin menghapus data?');" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-outline-danger btn-sm"
-                                                data-bs-toggle="tooltip" title="Delete">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </form>
+                                            <form action="{{ route('task.destroy', $t->id) }}" method="POST"
+                                                onsubmit="return confirm('Yakin menghapus data?');" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-outline-danger btn-sm"
+                                                    data-bs-toggle="tooltip" title="Delete">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        @endif
+
+
 
                                     </td>
                                     {{-- <td>

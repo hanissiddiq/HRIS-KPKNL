@@ -56,7 +56,9 @@
 
 
                     <div class="d-flex">
+                        {{-- @if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager') --}}
                         <a href="{{ route('leave-request.create') }}" class="btn btn-primary mb-3 ms-auto">Add New Leave</a>
+                        {{-- @endif --}}
                         {{-- <a href="{{ route('task.create') }}" class="btn btn-primary mb-3 ms-auto">Add New Task</a> --}}
                     </div>
                     <table class="table table-striped" id="table1">
@@ -68,7 +70,9 @@
                                 <th>End Date</th>
 
                                 <th>Status</th>
+                                @if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager')
                                 <th>Actions</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -94,6 +98,7 @@
 
 
                                     <td>
+                                        @if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager')
                                         @if ($l->status == 'pending' || $l->status == 'rejected')
                                             <a href="{{ route('leave-request.confirm', $l->id) }}"
                                                 class="btn btn-success btn-sm" data-bs-toggle="tooltip" title="View">
@@ -122,6 +127,7 @@
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

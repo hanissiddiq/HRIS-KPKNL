@@ -134,6 +134,18 @@ class HumanResourceSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+            [
+                'title' => 'HRD',
+                'description' => 'Human Resource Development',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'title' => 'Admin',
+                'description' => 'Mengelola administrasi aplikasi',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
         ]);
 
         DB::table('employees')->insert([

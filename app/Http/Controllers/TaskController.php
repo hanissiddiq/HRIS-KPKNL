@@ -23,7 +23,12 @@ class TaskController extends Controller
         // Auth::user();
         $data['page'] = 'Task';
         $data['judul_page'] = 'Task';
-        $data['task'] = Task::all();
+        if(session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager') {
+            $data['task'] = Task::all();
+        } else {
+            $data['task'] = Task::where('assigned_to', session('employee_id'))->get();
+        }
+        // $data['task'] = Task::all();
         $data['pegawai'] = Employee::all();
         return view('tasks.index', $data);
     }

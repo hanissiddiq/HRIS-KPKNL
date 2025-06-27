@@ -15,7 +15,12 @@ class LeaveRequestController extends Controller
     {
         $data['page'] = 'Leave Requests';
         $data['judul_page'] = 'Leave Requests';
-        $data['leave'] = LeaveRequest::all();
+
+        if(session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager') {
+        $data['leave'] = LeaveRequest::all(); }
+        else {
+            $data['leave'] = LeaveRequest::where('employee_id', session('employee_id'))->get();
+        }
 
         return view('leaves.index', $data);
     }
@@ -37,6 +42,8 @@ class LeaveRequestController extends Controller
      */
     public function store(Request $request)
     {
+        if(session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager')
+        {
         $validated = $request->validate([
             'employee_id' => 'required',
             'leave_type' => 'required',
@@ -44,6 +51,20 @@ class LeaveRequestController extends Controller
             'end_date' => 'required',
             'status' => 'required|string',
         ]);
+        }
+    else
+        {
+         // Validasi field input, kecuali status dan employee_id (akan ditambahkan manual)
+         $validated = $request->validate([
+            'leave_type' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+
+        // Tambahkan nilai field manual
+        $validated['employee_id'] = session('employee_id');
+        $validated['status'] = 'pending';
+        }
 
         //         //Jika Berhasil
         LeaveRequest::create($validated);
