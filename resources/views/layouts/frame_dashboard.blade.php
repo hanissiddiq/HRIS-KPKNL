@@ -28,8 +28,11 @@
     <link rel="stylesheet" crossorigin href="{{ asset('mazer/dist/assets/extensions/table-datatable.css') }}">
     {{-- <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpicker.min.css"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet"  href="{{ asset('mazer/dist/assets/compiled/css/ui-icons-dripicons.css') }}">
 
-
+    {{-- Dripicons --}}
+    <link rel="stylesheet" href="{{ asset('mazer/dist/assets/extensions/@icon/dripicons/dripicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('mazer/dist/assets/compiled/css/ui-icons-dripicons.css') }}">
 
 </head>
 
