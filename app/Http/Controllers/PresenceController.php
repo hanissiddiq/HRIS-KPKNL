@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Presence;
 use App\Models\Employee;
+use Carbon\Carbon;
 
 class PresenceController extends Controller
 {
@@ -15,7 +16,11 @@ class PresenceController extends Controller
     {
         $data['page'] = 'Presence';
         $data['judul_page'] = 'Presence';
-        $data['presence'] = Presence::all();
+        if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager') {
+            $data['presence'] = Presence::all();
+        } else {
+            $data['presence'] = Presence::where('employee_id', session('employee_id'))->get();
+        }
 
         return view('presences.index', $data);
     }
@@ -27,7 +32,7 @@ class PresenceController extends Controller
     {
         $data['page'] = 'Presence';
         $data['judul_page'] = 'Create Presence';
-        $data['employee'] = Employee::all()->sortBy('fullname');;
+        $data['employee'] = Employee::all()->sortBy('fullname');
         return view('presences.create', $data);
     }
 
@@ -36,16 +41,28 @@ class PresenceController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'employee_id' => 'required',
-            'check_in' => 'required',
-            'check_out' => 'required',
-            'date' => 'required|date',
-            'status' => 'required|string',
-        ]);
+        if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager') {
+            $validated = $request->validate([
+                'employee_id' => 'required',
+                'check_in' => 'required',
+                'check_out' => 'required',
+                'date' => 'required|date',
+                'status' => 'required|string',
+            ]);
 
-        //         //Jika Berhasil
-        Presence::create($validated);
+            //         //Jika Berhasil
+            Presence::create($validated);
+        } else {
+            presence::create([
+                'employee_id' => session('employee_id'),
+                'check_in' => Carbon::now()->format('Y-m-d H:i:s'),
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude,
+                'date' => Carbon::now()->format('Y-m-d'),
+                'status' =>'present',
+            ]);
+
+        }
         return redirect()->route('presence')->with('success', 'Presence recorded successfully.');
     }
 
@@ -68,7 +85,7 @@ class PresenceController extends Controller
         $data['page'] = 'Presence';
         $data['judul_page'] = 'Edit Presence';
         $data['presence'] = Presence::find($id);
-        $data['employee'] = Employee::all()->sortBy('fullname');;
+        $data['employee'] = Employee::all()->sortBy('fullname');
         return view('presences.edit', $data);
     }
 

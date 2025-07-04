@@ -28,8 +28,11 @@
     <link rel="stylesheet" crossorigin href="{{ asset('mazer/dist/assets/extensions/table-datatable.css') }}">
     {{-- <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpicker.min.css"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet"  href="{{ asset('mazer/dist/assets/compiled/css/ui-icons-dripicons.css') }}">
 
-
+    {{-- Dripicons --}}
+    <link rel="stylesheet" href="{{ asset('mazer/dist/assets/extensions/@icon/dripicons/dripicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('mazer/dist/assets/compiled/css/ui-icons-dripicons.css') }}">
 
 </head>
 
@@ -86,55 +89,18 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        <li class="sidebar-title">Menu</li>
+                        <li class="sidebar-title"> <strong>Menu</strong> </li>
+
+                        @if (session('role') === 'Admin')
 
                         <li class="sidebar-item {{ $page == 'Dashboard' ? 'active' : '' }}">
                             <a href="{{ route('dashboard') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
-
-
                         </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-stack"></i>
-                                <span>Data Master</span>
-                            </a>
-
-                            <ul class="submenu ">
-
-                                <li class="submenu-item  ">
-                                    <a href="component-accordion.html" class="submenu-link">Pegawai</a>
-
-                                </li>
-
-                                <li class="submenu-item  ">
-                                    <a href="component-alert.html" class="submenu-link">Departemen</a>
-
-                                </li>
-
-                                <li class="submenu-item  ">
-                                    <a href="component-badge.html" class="submenu-link">Jabatan</a>
-
-                                </li>
-                            </ul>
-
-
-                        </li>
-
-
-
-                        <li class="sidebar-title">Entri Data</li>
-
-
-                        <li class="sidebar-item {{ $page == 'Task' ? 'active' : '' }} ">
-                            <a href="{{ route('task') }}" class='sidebar-link '>
-                                <i class="bi bi-check-circle-fill"></i>
-                                <span>Tugas</span>
-                            </a>
-                        </li>
+                        <li class="sidebar-title"><strong>Data Master</strong>  </li>
 
                         <li class="sidebar-item  {{ $page == 'Employee' ? 'active' : '' }}  ">
                             <a href="{{ route('employee') }}" class='sidebar-link'>
@@ -152,6 +118,57 @@
                             <a href="{{ route('role') }}" class='sidebar-link'>
                                 <i class="bi bi-tag"></i>
                                 <span>Role</span>
+                            </a>
+                        </li>
+
+
+
+                        <li class="sidebar-title"><strong>Entry Data</strong></li>
+
+
+                        <li class="sidebar-item {{ $page == 'Task' ? 'active' : '' }} ">
+                            <a href="{{ route('task') }}" class='sidebar-link '>
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Tugas</span>
+                            </a>
+                        </li>
+
+
+
+                        <li class="sidebar-item  {{ $page == 'Presence' ? 'active' : '' }}  ">
+                            <a href="{{ route('presence') }}" class='sidebar-link'>
+                                <i class="bi bi-table"></i>
+                                <span>Presensi</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  {{ $page == 'Payroll' ? 'active' : '' }}  ">
+                            <a href="{{ route('payroll') }}" class='sidebar-link'>
+                                <i class="bi bi-currency-dollar"></i>
+                                <span>Penggajian Karyawan</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  {{ $page == 'Leave Requests' ? 'active' : '' }}  ">
+                            <a href="{{ route('leave-request') }}" class='sidebar-link'>
+                                <i class="bi bi-shift-fill"></i>
+                                <span>Pengajuan Cuti</span>
+                            </a>
+                        </li>
+
+                        @endif
+
+                        @if (in_array(session('role'), ['Data Entry', 'Karyawan']))
+                        <li class="sidebar-item {{ $page == 'Dashboard' ? 'active' : '' }}">
+                            <a href="{{ route('dashboard') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item {{ $page == 'Task' ? 'active' : '' }} ">
+                            <a href="{{ route('task') }}" class='sidebar-link '>
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Tugas</span>
                             </a>
                         </li>
 
@@ -174,6 +191,8 @@
                                 <span>Pengajuan Cuti</span>
                             </a>
                         </li>
+
+                        @endif
 
 
                         {{-- <li class="sidebar-item  ">

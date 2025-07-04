@@ -56,7 +56,9 @@
 
 
                     <div class="d-flex">
+                        @if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager')
                         <a href="{{ route('payroll.create') }}" class="btn btn-primary mb-3 ms-auto">Add New Payroll</a>
+                        @endif
                     </div>
                     <table class="table table-striped" id="table1">
                         <thead>
@@ -92,6 +94,8 @@
                                             <i class="bi bi-eye"></i>
                                         </a>
 
+                                        @if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager')
+
                                         <a href="{{ route('payroll.edit', $p->id) }}" class="btn btn-outline-success btn-sm"
                                             data-bs-toggle="tooltip" title="Edit">
                                             <i class="bi bi-pencil"></i>
@@ -107,6 +111,7 @@
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
+                                        @endif
                                     </td>
 
                                 </tr>

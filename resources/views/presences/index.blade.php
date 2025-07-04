@@ -66,9 +66,9 @@
                                 <th>Check Out</th>
                                 <th>Date</th>
                                 <th>Status</th>
-                                {{-- <th width=150>Description</th> --}}
-
+                            @if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager')
                                 <th>Actions</th>
+                            @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -90,6 +90,8 @@
                                             <span class="badge bg-warning">{{ strtoupper($p->status) }}</span>
                                         @endif
                                     </td>
+
+                                    @if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager')
 
                                     <td>
                                         <a href="{{ route('presence.show', $p->id) }}"
@@ -113,6 +115,7 @@
                                             </button>
                                         </form>
                                     </td>
+                                    @endif
 
                                 </tr>
                             @endforeach

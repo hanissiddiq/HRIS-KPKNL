@@ -49,6 +49,7 @@
 
                     <form action="{{ route('leave-request.store') }}" method="POST">
                         @csrf
+                        @if(session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager')
                         <div class="mb-1">
                             <label for="employee_id" class="form-label">Employee</label>
                             <select class="form-control" name="employee_id" id="employee_id" required>
@@ -58,6 +59,7 @@
                                 @endforeach
                             </select>
                         </div>
+                        @endif
 
 
 
@@ -91,6 +93,8 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        @if(session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager')
                         <div class="mb-1">
                             <label for="status" class="form-label">Status</label>
                             <select name="status" id="status"
@@ -104,6 +108,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                        @endif
 
                         <div class="mb-1">
                             <div class="mt-3">

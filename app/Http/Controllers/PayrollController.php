@@ -13,7 +13,11 @@ class PayrollController extends Controller
     {
         $data['page'] = 'Payroll';
         $data['judul_page'] = 'Payroll';
-        $data['payroll'] = Payroll::all();
+        if(session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager') {
+        $data['payroll'] = Payroll::all(); }
+        else {
+            $data['payroll'] = Payroll::where('employee_id', session('employee_id'))->get();
+        }
 
         return view('payrolls.index', $data);
     }

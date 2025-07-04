@@ -48,9 +48,11 @@
 
                     @endif
 
+                    @if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager')
                     <form action="{{ route('presence.store') }}" method="POST">
                         @csrf
                         <div class="mb-1">
+                            @if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager')
                             <label for="employee_id" class="form-label">Employee</label>
                             <select class="form-control" name="employee_id" id="status">
                                 <option>=== Pilih Karyawan ===</option>
@@ -62,6 +64,7 @@
                             @error('employee_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
+                            @endif
                         </div>
                         <div class="mb-1">
                             <label for="check_in" class="form-label">Check In</label>
@@ -99,9 +102,6 @@
                             @enderror
                         </div>
 
-
-
-
                         <div class="mb-1">
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -109,9 +109,41 @@
                                     onclick="window.history.go(-1); return false;">Back</button>
                             </div>
                         </div>
-
-
                     </form>
+
+                    @else
+                    <form action="{{ route('presence.store') }}" method="POST">
+                        @csrf
+
+                        <div class="mb-1 alert alert-info">
+                            <i class="bi bi-exclamation-triangle">
+                            <b>Note</b> : Mohon Izinkan Akses Lokasi, Supaya Data Presensi Akurat </i>
+                        </div>
+                        <div class="mb-1">
+                            <label for="latitude" class="form-label">Latitude</label>
+                            <input type="text" class="form-control" name="latitude" id="latitude"
+                            required>
+                            @error('latitude')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-1">
+                            <label for="longitude" class="form-label">Longitude</label>
+                            <input type="text" class="form-control" name="longitude" id="longitude"
+                           required>
+                            @error('longitude')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-1">
+                            <iframe width="275" height="300" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="btn-present" disabled> Present</button>
+
+                    @endif
+
+
                 </div>
             </div>
 
@@ -136,4 +168,50 @@
             </div>
         </div>
     </footer>
+
+    <script>
+
+        const iframe = document.querySelector('iframe');
+
+        const officeLat = 5.180567;
+        const officeLon = 96.806673;
+        const threshold = 0.02;     // Adjust this value as needed
+
+        navigator.geolocation.getCurrentPosition(function (position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            iframe.src = `https://maps.google.com/maps?q=${lat},${lon}&output=embed`;
+
+            });
+
+            document.addEventListener('DOMContentLoaded', (event) => {
+                if(navigator.geolocation){
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+
+                        document.getElementById('latitude').value = lat;
+                        document.getElementById('longitude').value = lon;
+
+                        // Check if the user is within the threshold distance from the office
+                        const distance = Math.sqrt(Math.pow(lat - officeLat, 2) + Math.pow(lon - officeLon, 2));
+
+                        if (distance <= threshold) {
+                            //Presensi ada disekitar kantor
+                            alert('Kamu berada dekat kantor, silahkan lanjutkan presensi.');
+                            document.getElementById('btn-present').removeAttribute('disabled'); // Enable the submit button
+                        } else {
+                            alert('Kamu tidak berada di kantor, pastikan kamu berada dikantor untuk melakukan presensi.');
+                        }
+                    });
+                } else {
+                    alert('Geolocation is not supported by this browser.');
+                }
+
+            });
+
+
+
+
+    </script>
 @endsection

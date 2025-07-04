@@ -23,12 +23,12 @@
                                             <div
                                                 class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                                 <div class="stats-icon purple mb-2">
-                                                    <i class="iconly-boldShow"></i>
+                                                    <i class="icon dripicons dripicons-briefcase"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Profile Views</h6>
-                                                <h6 class="font-extrabold mb-0">58</h6>
+                                                <h6 class="text-muted font-semibold">Departement</h6>
+                                                <h5 class="font-extrabold mb-0">{{ $departementCount }}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -41,12 +41,12 @@
                                             <div
                                                 class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                                 <div class="stats-icon blue mb-2">
-                                                    <i class="iconly-boldProfile"></i>
+                                                    <i class="icon dripicons dripicons-user-group"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Pegawai ASN</h6>
-                                                <h6 class="font-extrabold mb-0">26</h6>
+                                                <h6 class="text-muted font-semibold">Employee</h6>
+                                                <h5 class="font-extrabold mb-0">{{ $employeeCount }}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -59,12 +59,12 @@
                                             <div
                                                 class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                                 <div class="stats-icon green mb-2">
-                                                    <i class="iconly-boldAdd-User"></i>
+                                                    <i class="icon dripicons dripicons-alarm"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Pegawai Non ASN</h6>
-                                                <h6 class="font-extrabold mb-0">14</h6>
+                                                <h6 class="text-muted font-semibold">Presensi</h6>
+                                                <h5 class="font-extrabold mb-0">{{ $presenceCount }}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -77,12 +77,12 @@
                                             <div
                                                 class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                                 <div class="stats-icon red mb-2">
-                                                    <i class="iconly-boldBookmark"></i>
+                                                    <i class="icon dripicons dripicons-article"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Honorer</h6>
-                                                <h6 class="font-extrabold mb-0">5</h6>
+                                                <h6 class="text-muted font-semibold">Payroll</h6>
+                                                <h5 class="font-extrabold mb-0">{{ $payrollCount }}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Profile Visit</h4>
+                                        <h4>Latest Presence</h4>
                                     </div>
                                     <div class="card-body">
                                         <div id="chart-profile-visit"></div>
@@ -102,7 +102,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 col-xl-4">
+
+                            {{-- <div class="col-12 col-xl-4">
                                 <div class="card">
                                     <div class="card-header">
                                         <h4>Profile Visit</h4>
@@ -182,78 +183,52 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-xl-8">
+                            </div> --}}
+
+                            <div class="col-12 ">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Latest Comments</h4>
+                                        <h4>Latest Task</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table table-hover table-lg">
                                                 <thead>
                                                     <tr>
-                                                        <th>Name</th>
-                                                        <th>Comment</th>
+                                                        <th>Employee</th>
+                                                        <th>Detail</th>
+                                                        <th>Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @foreach ($task as $task)
                                                     <tr>
                                                         <td class="col-3">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="avatar avatar-md">
                                                                     <img
-                                                                        src="{{ asset('mazer/dist/assets/compiled/jpg/5.jpg') }}">
+                                                                        src="https://ui-avatars.com/api/?name={{ $task->employee->fullname }}&background=random">
                                                                 </div>
-                                                                <p class="font-bold ms-3 mb-0">Rekha Agustina</p>
+                                                                <p class="font-bold ms-3 mb-0">{{ $task->employee->fullname }}</p>
                                                             </div>
                                                         </td>
                                                         <td class="col-auto">
-                                                            <p class=" mb-0">Aplikasi sangat responsif dan mudah digunakan, antarmuka ramah bagi pengguna baru.</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar avatar-md">
-                                                                    <img
-                                                                        src="{{ asset('mazer/dist/assets/compiled/jpg/2.jpg') }}">
-                                                                </div>
-                                                                <p class="font-bold ms-3 mb-0">Rianzard Ritonga</p>
-                                                            </div>
+                                                            <p class=" mb-0">{{ $task->title }}</p>
                                                         </td>
                                                         <td class="col-auto">
-                                                            <p class=" mb-0">Pengajuan izin cepat diproses, sangat membantu saat kondisi mendesak atau mendadak</p>
+                                                            <p class=" mb-0">
+                                                                 @if ($task->status == 'pending')
+                                                                 <span class="badge bg-warning text-white"> {{ ucfirst($task->status) }}</span>
+                                                                 @elseif ($task->status == 'done')
+                                                                 <span class="badge bg-success text-white"> {{ ucfirst($task->status) }}</span>
+                                                                 @else
+                                                                 <span class="badge bg-info text-white"> {{ ucfirst($task->status) }}</span>
+                                                                 @endif
+                                                               
+                                                            </p>
                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar avatar-md">
-                                                                    <img
-                                                                        src="{{ asset('mazer/dist/assets/compiled/jpg/8.jpg') }}">
-                                                                </div>
-                                                                <p class="font-bold ms-3 mb-0">Zulfath</p>
-                                                            </div>
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            <p class=" mb-0">Dashboard sangat informatif, memudahkan monitoring kinerja dan kedisiplinan karyawan.</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar avatar-md">
-                                                                    <img
-                                                                        src="{{ asset('mazer/dist/assets/compiled/jpg/3.jpg') }}">
-                                                                </div>
-                                                                <p class="font-bold ms-3 mb-0">Muzammil</p>
-                                                            </div>
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            <p class=" mb-0">Data real-time dan akurat, meminimalisir kesalahan dalam evaluasi karyawan.</p>
-                                                        </td>
-                                                    </tr>
+                                                    </tr> 
+                                                    @endforeach                                                   
                                                 </tbody>
                                             </table>
                                         </div>
@@ -279,50 +254,32 @@
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                <h4>Pesan</h4>
+                                <h4>Latest Add Employee</h4>
                             </div>
                             <div class="card-content pb-4">
+                                @foreach ($employeeLatest as $e )
                                 <div class="recent-message d-flex px-4 py-3">
                                     <div class="avatar avatar-lg">
-                                        <img src="{{ asset('mazer/dist/assets/compiled/jpg/4.jpg') }}">
+                                        <img src="https://ui-avatars.com/api/?name={{ $e->fullname }}&background=random">
                                     </div>
                                     <div class="name ms-4">
-                                        <h5 class="mb-1">Nurhaliza</h5>
-                                        <h6 class="text-muted mb-0">@Nurhlzaa</h6>
+                                        <h5 class="mb-1">{{ $e->fullname }}</h5>
+                                        <h6 class="text-muted mb-0">{{ $e->email }}</h6>
                                     </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="{{ asset('mazer/dist/assets/compiled/jpg/5.jpg') }}">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Afra Diana</h5>
-                                        <h6 class="text-muted mb-0">@Afradiana2001</h6>
-                                    </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="{{ asset('mazer/dist/assets/compiled/jpg/1.jpg') }}">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Safarina</h5>
-                                        <h6 class="text-muted mb-0">@chavanina</h6>
-                                    </div>
-                                </div>
-                                <div class="px-4">
-                                    <button class='btn btn-block btn-xl btn-outline-primary font-bold mt-3'>Start
-                                        Conversation</button>
-                                </div>
+                                </div>                                    
+                                @endforeach
                             </div>
                         </div>
-                        <div class="card">
+
+                        {{-- <div class="card">
                             <div class="card-header">
                                 <h4>Visitors Profile</h4>
                             </div>
                             <div class="card-body">
                                 <div id="chart-visitors-profile"></div>
                             </div>
-                        </div>
+                        </div> --}}
+
                     </div>
                 </section>
             </div>

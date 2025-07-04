@@ -17,11 +17,26 @@ class UserSeeder extends Seeder
     {
         //
         User::create(array(
-            'name' => 'Administrator E-Laundry',            
+            'name' => 'Administrator HRIS',
             'email' => 'admin@hris.com',
             'email_verified_at' => now(),
             'password' => bcrypt('mantap'),
             'remember_token' =>null,
         ));
+        User::create(array(
+            'name' => 'Staff',
+            'email' => 'staff@hris.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('mantap'),
+            'remember_token' =>null,
+        ));
+        User::create(array(
+            'name' => 'Karyawan',
+            'email' => 'karyawan@hris.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('mantap'),
+            'remember_token' =>null,
+        ));
     }
+
 }

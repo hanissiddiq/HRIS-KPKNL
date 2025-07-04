@@ -16,7 +16,12 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware('auth')->group(function () {
+
+
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard')->middleware(['role:Admin,HRD,Manager,Data Entry,Karyawan']);
 
 
 
@@ -26,7 +31,7 @@ Route::get('/task/show/{id}', [TaskController::class, 'show'])->name('task.show'
 
 // Handling rute untuk task
 
-Route::get('/task', [TaskController::class, 'index'])->name('task');
+Route::get('/task', [TaskController::class, 'index'])->name('task')->middleware(['role:Admin,HRD,Manager,Data Entry,Karyawan']);
 Route::get('/task/create', [TaskController::class, 'create'])->name('task.create');
 Route::post('/task', [TaskController::class, 'store'])->name('task.store');
 Route::delete('/task/{id}', [TaskController::class, 'destroy'])->name('task.destroy');
@@ -34,7 +39,7 @@ Route::get('/task/detail/{id}', [TaskController::class, 'edit'])->name('task.edi
 Route::put('/task/detail/{id}', [TaskController::class, 'update'])->name('task.update');
 
 // Handling rute untuk employee
-Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
+Route::get('/employee', [EmployeeController::class, 'index'])->name('employee')->middleware(['role:Admin,HRD,Manager']);
 Route::get('/employee/show/{id}', [EmployeeController::class, 'show'])->name('employee.show');
 Route::get('/employee/create', [EmployeeController::class, 'create'])->name('employee.create');
 Route::post('/employee', [EmployeeController::class, 'store'])->name('employee.store');
@@ -43,7 +48,7 @@ Route::get('/employee/detail/{id}', [EmployeeController::class, 'edit'])->name('
 Route::put('/employee/detail/{id}', [EmployeeController::class, 'update'])->name('employee.update');
 
 // Handling rute untuk departement
-Route::get('/departement', [DepartementController::class, 'index'])->name('departement');
+Route::get('/departement', [DepartementController::class, 'index'])->name('departement')->middleware(['role:Admin,HRD,Manager']);
 Route::get('/departement/show/{id}', [DepartementController::class, 'show'])->name('departement.show');
 Route::get('/departement/create', [DepartementController::class, 'create'])->name('departement.create');
 Route::post('/departement', [DepartementController::class, 'store'])->name('departement.store');
@@ -52,7 +57,7 @@ Route::get('/departement/detail/{id}', [DepartementController::class, 'edit'])->
 Route::put('/departement/detail/{id}', [DepartementController::class, 'update'])->name('departement.update');
 
 // Handling rute untuk departement
-Route::get('/role', [RoleController::class, 'index'])->name('role');
+Route::get('/role', [RoleController::class, 'index'])->name('role')->middleware(['role:Admin,HRD,Manager']);
 Route::get('/role/show/{id}', [RoleController::class, 'show'])->name('role.show');
 Route::get('/role/create', [RoleController::class, 'create'])->name('role.create');
 Route::post('/role', [RoleController::class, 'store'])->name('role.store');
@@ -61,7 +66,7 @@ Route::get('/role/detail/{id}', [RoleController::class, 'edit'])->name('role.edi
 Route::put('/role/detail/{id}', [RoleController::class, 'update'])->name('role.update');
 
 // Handling rute untuk presence
-Route::get('/presence', [PresenceController::class, 'index'])->name('presence');
+Route::get('/presence', [PresenceController::class, 'index'])->name('presence')->middleware(['role:Admin,HRD,Manager,Data Entry,Karyawan']);
 Route::get('/presence/show/{id}', [PresenceController::class, 'show'])->name('presence.show');
 Route::get('/presence/create', [PresenceController::class, 'create'])->name('presence.create');
 Route::post('/presence', [PresenceController::class, 'store'])->name('presence.store');
@@ -70,7 +75,7 @@ Route::get('/presence/detail/{id}', [PresenceController::class, 'edit'])->name('
 Route::put('/presence/detail/{id}', [PresenceController::class, 'update'])->name('presence.update');
 
 // Handling rute untuk presence
-Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll');
+Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll')->middleware(['role:Admin,HRD,Manager,Data Entry,Karyawan']);
 Route::get('/payroll/show/{id}', [PayrollController::class, 'show'])->name('payroll.show');
 Route::get('/payroll/create', [PayrollController::class, 'create'])->name('payroll.create');
 Route::post('/payroll', [PayrollController::class, 'store'])->name('payroll.store');
@@ -83,17 +88,17 @@ Route::put('/payroll/detail/{id}', [PayrollController::class, 'update'])->name('
 Route::get('/payrolls/{id}/cetak-pdf', [PayrollController::class, 'cetakPDF'])->name('payroll.cetakPDF');
 
 // Handling rute untuk presence
-Route::get('/leave-request', [LeaveRequestController::class, 'index'])->name('leave-request');
+Route::get('/leave-request', [LeaveRequestController::class, 'index'])->name('leave-request')->middleware(['role:Admin,HRD,Manager,Data Entry,Karyawan']);
 Route::get('/leave-request/show/{id}', [LeaveRequestController::class, 'show'])->name('leave-request.show');
 Route::get('/leave-request/create', [LeaveRequestController::class, 'create'])->name('leave-request.create');
 Route::post('/leave-request', [LeaveRequestController::class, 'store'])->name('leave-request.store');
 Route::delete('/leave-request/{id}', [LeaveRequestController::class, 'destroy'])->name('leave-request.destroy');
 Route::get('/leave-request/detail/{id}', [LeaveRequestController::class, 'edit'])->name('leave-request.edit');
 Route::put('/leave-request/detail/{id}', [LeaveRequestController::class, 'update'])->name('leave-request.update');
-Route::get('/leave-request/confirm/{id}', [LeaveRequestController::class, 'confirm'])->name('leave-request.confirm');
-Route::get('/leave-request/reject/{id}', [LeaveRequestController::class, 'reject'])->name('leave-request.reject');
+Route::get('/leave-request/confirm/{id}', [LeaveRequestController::class, 'confirm'])->name('leave-request.confirm')->middleware(['role:Admin,HRD,Manager']);
+Route::get('/leave-request/reject/{id}', [LeaveRequestController::class, 'reject'])->name('leave-request.reject')->middleware(['role:Admin,HRD,Manager']);
 
-
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
