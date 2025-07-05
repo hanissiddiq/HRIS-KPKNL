@@ -28,7 +28,7 @@
     <link rel="stylesheet" crossorigin href="{{ asset('mazer/dist/assets/extensions/table-datatable.css') }}">
     {{-- <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpicker.min.css"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet"  href="{{ asset('mazer/dist/assets/compiled/css/ui-icons-dripicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('mazer/dist/assets/compiled/css/ui-icons-dripicons.css') }}">
 
     {{-- Dripicons --}}
     <link rel="stylesheet" href="{{ asset('mazer/dist/assets/extensions/@icon/dripicons/dripicons.css') }}">
@@ -92,106 +92,103 @@
                         <li class="sidebar-title"> <strong>Menu</strong> </li>
 
                         @if (session('role') === 'Admin')
+                            <li class="sidebar-item {{ $page == 'Dashboard' ? 'active' : '' }}">
+                                <a href="{{ route('dashboard') }}" class='sidebar-link'>
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
 
-                        <li class="sidebar-item {{ $page == 'Dashboard' ? 'active' : '' }}">
-                            <a href="{{ route('dashboard') }}" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
+                            <li class="sidebar-title"><strong>Data Master</strong> </li>
 
-                        <li class="sidebar-title"><strong>Data Master</strong>  </li>
-
-                        <li class="sidebar-item  {{ $page == 'Employee' ? 'active' : '' }}  ">
-                            <a href="{{ route('employee') }}" class='sidebar-link'>
-                                <i class="bi bi-people-fill"></i>
-                                <span>Pegawai</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  {{ $page == 'Departement' ? 'active' : '' }}  ">
-                            <a href="{{ route('departement') }}" class='sidebar-link'>
-                                <i class="bi bi-grid-1x2-fill"></i>
-                                <span>Departement</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  {{ $page == 'Role' ? 'active' : '' }}  ">
-                            <a href="{{ route('role') }}" class='sidebar-link'>
-                                <i class="bi bi-tag"></i>
-                                <span>Role</span>
-                            </a>
-                        </li>
-
-
-
-                        <li class="sidebar-title"><strong>Entry Data</strong></li>
-
-
-                        <li class="sidebar-item {{ $page == 'Task' ? 'active' : '' }} ">
-                            <a href="{{ route('task') }}" class='sidebar-link '>
-                                <i class="bi bi-check-circle-fill"></i>
-                                <span>Tugas</span>
-                            </a>
-                        </li>
+                            <li class="sidebar-item  {{ $page == 'Employee' ? 'active' : '' }}  ">
+                                <a href="{{ route('employee') }}" class='sidebar-link'>
+                                    <i class="bi bi-people-fill"></i>
+                                    <span>Pegawai</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  {{ $page == 'Departement' ? 'active' : '' }}  ">
+                                <a href="{{ route('departement') }}" class='sidebar-link'>
+                                    <i class="bi bi-grid-1x2-fill"></i>
+                                    <span>Departement</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  {{ $page == 'Role' ? 'active' : '' }}  ">
+                                <a href="{{ route('role') }}" class='sidebar-link'>
+                                    <i class="bi bi-tag"></i>
+                                    <span>Role</span>
+                                </a>
+                            </li>
 
 
 
-                        <li class="sidebar-item  {{ $page == 'Presence' ? 'active' : '' }}  ">
-                            <a href="{{ route('presence') }}" class='sidebar-link'>
-                                <i class="bi bi-table"></i>
-                                <span>Presensi</span>
-                            </a>
-                        </li>
+                            <li class="sidebar-title"><strong>Entry Data</strong></li>
 
-                        <li class="sidebar-item  {{ $page == 'Payroll' ? 'active' : '' }}  ">
-                            <a href="{{ route('payroll') }}" class='sidebar-link'>
-                                <i class="bi bi-currency-dollar"></i>
-                                <span>Penggajian Karyawan</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  {{ $page == 'Leave Requests' ? 'active' : '' }}  ">
-                            <a href="{{ route('leave-request') }}" class='sidebar-link'>
-                                <i class="bi bi-shift-fill"></i>
-                                <span>Pengajuan Cuti</span>
-                            </a>
-                        </li>
 
+                            <li class="sidebar-item {{ $page == 'Task' ? 'active' : '' }} ">
+                                <a href="{{ route('task') }}" class='sidebar-link '>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Tugas</span>
+                                </a>
+                            </li>
+
+
+
+                            <li class="sidebar-item  {{ $page == 'Presence' ? 'active' : '' }}  ">
+                                <a href="{{ route('presence') }}" class='sidebar-link'>
+                                    <i class="bi bi-table"></i>
+                                    <span>Presensi</span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-item  {{ $page == 'Payroll' ? 'active' : '' }}  ">
+                                <a href="{{ route('payroll') }}" class='sidebar-link'>
+                                    <i class="bi bi-currency-dollar"></i>
+                                    <span>Penggajian Karyawan</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  {{ $page == 'Leave Requests' ? 'active' : '' }}  ">
+                                <a href="{{ route('leave-request') }}" class='sidebar-link'>
+                                    <i class="bi bi-shift-fill"></i>
+                                    <span>Pengajuan Cuti</span>
+                                </a>
+                            </li>
                         @endif
 
                         @if (in_array(session('role'), ['Data Entry', 'Karyawan']))
-                        <li class="sidebar-item {{ $page == 'Dashboard' ? 'active' : '' }}">
-                            <a href="{{ route('dashboard') }}" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
+                            <li class="sidebar-item {{ $page == 'Dashboard' ? 'active' : '' }}">
+                                <a href="{{ route('dashboard') }}" class='sidebar-link'>
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
 
-                        <li class="sidebar-item {{ $page == 'Task' ? 'active' : '' }} ">
-                            <a href="{{ route('task') }}" class='sidebar-link '>
-                                <i class="bi bi-check-circle-fill"></i>
-                                <span>Tugas</span>
-                            </a>
-                        </li>
+                            <li class="sidebar-item {{ $page == 'Task' ? 'active' : '' }} ">
+                                <a href="{{ route('task') }}" class='sidebar-link '>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Tugas</span>
+                                </a>
+                            </li>
 
-                        <li class="sidebar-item  {{ $page == 'Presence' ? 'active' : '' }}  ">
-                            <a href="{{ route('presence') }}" class='sidebar-link'>
-                                <i class="bi bi-table"></i>
-                                <span>Presensi</span>
-                            </a>
-                        </li>
+                            <li class="sidebar-item  {{ $page == 'Presence' ? 'active' : '' }}  ">
+                                <a href="{{ route('presence') }}" class='sidebar-link'>
+                                    <i class="bi bi-table"></i>
+                                    <span>Presensi</span>
+                                </a>
+                            </li>
 
-                        <li class="sidebar-item  {{ $page == 'Payroll' ? 'active' : '' }}  ">
-                            <a href="{{ route('payroll') }}" class='sidebar-link'>
-                                <i class="bi bi-currency-dollar"></i>
-                                <span>Penggajian Karyawan</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item  {{ $page == 'Leave Requests' ? 'active' : '' }}  ">
-                            <a href="{{ route('leave-request') }}" class='sidebar-link'>
-                                <i class="bi bi-shift-fill"></i>
-                                <span>Pengajuan Cuti</span>
-                            </a>
-                        </li>
-
+                            <li class="sidebar-item  {{ $page == 'Payroll' ? 'active' : '' }}  ">
+                                <a href="{{ route('payroll') }}" class='sidebar-link'>
+                                    <i class="bi bi-currency-dollar"></i>
+                                    <span>Penggajian Karyawan</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  {{ $page == 'Leave Requests' ? 'active' : '' }}  ">
+                                <a href="{{ route('leave-request') }}" class='sidebar-link'>
+                                    <i class="bi bi-shift-fill"></i>
+                                    <span>Pengajuan Cuti</span>
+                                </a>
+                            </li>
                         @endif
 
 
@@ -271,7 +268,8 @@
     <!-- Need: Apexcharts -->
     <script src="{{ asset('mazer/dist/assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('mazer/dist/assets/static/js/pages/dashboard.js') }}"></script>
-
+    <!-- Need: ChartJS -->
+    <script src="{{ asset('mazer/dist/assets/extensions/chart.js/chart.umd.js') }}"></script>
 
     {{-- Script JS untuk halaman DataTables
              --}}
@@ -294,32 +292,70 @@
             // altInput: true,
             // altFormat: "F j, Y",
             // defaultDate: "today",
+        });   
+    </script>
+
+   
+
+
+<script>
+    // custom ChartJS untuk presensi
+        var ctxBar = document.getElementById('presence').getContext('2d');
+        var myBar = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Total Presence',
+                    data: [],
+                    backgroundColor: 'rgba(150, 148, 255, 0.2)',
+                    borderColor: '#57caeb',
+                    borderWidth: .3
+
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Latest Presence'
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Presence Data'
+                    }
+                }
+            }
         });
-    </script>
-    <script>
-        // Elemen input
-        const salaryEl = document.getElementById('salary');
-        const bonusEl = document.getElementById('bonuses');
-        const deductEl = document.getElementById('deductions');
-        const netSalaryEl = document.getElementById('net_salary');
 
-        // Fungsi kalkulasi
-        function calculateNetSalary() {
-            const salary = parseFloat(salaryEl.value) || 0;
-            const bonus = parseFloat(bonusEl.value) || 0;
-            const deduct = parseFloat(deductEl.value) || 0;
-            const net = salary + bonus - deduct;
-            netSalaryEl.value = net;
+
+        function updateChart() {
+           fetch('/dashboard/presence')
+                .then(response => response.json())
+                .then((output) => {
+                                     
+                    myBar.data.datasets= [
+                        {
+                            label: 'Total Presence',
+                            data: output,
+                            backgroundColor: 'rgba(150, 148, 255, 0.2)',
+                            borderColor: '#57caeb',
+                            borderWidth: .3
+                        }
+                    ];
+                    myBar.update();
+                });
+                
         }
-
-        // Event listener supaya realtime saat input berubah
-        [salaryEl, bonusEl, deductEl].forEach(el =>
-            el.addEventListener('input', calculateNetSalary)
-        );
-
-        // Initial calculate jika input sudah ada nilai awal
-        calculateNetSalary();
-    </script>
+        
+        // Call updateChart() whenever you need to refresh the chart data
+        updateChart();
+</script>
 
 </body>
 

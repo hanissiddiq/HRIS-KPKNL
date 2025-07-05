@@ -96,7 +96,7 @@
                                         <h4>Latest Presence</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div id="chart-profile-visit"></div>
+                                        <canvas id="presence"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +201,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($task as $task)
+                                                    @foreach ($taskLatest as $task)
                                                     <tr>
                                                         <td class="col-3">
                                                             <div class="d-flex align-items-center">
@@ -269,6 +269,7 @@
                                 </div>                                    
                                 @endforeach
                             </div>
+
                         </div>
 
                         {{-- <div class="card">
