@@ -139,4 +139,30 @@
             </div>
         </div>
     </footer>
+
+
+     <script>
+        // Elemen input
+        const salaryEl = document.getElementById('salary');
+        const bonusEl = document.getElementById('bonuses');
+        const deductEl = document.getElementById('deductions');
+        const netSalaryEl = document.getElementById('net_salary');
+
+        // Fungsi kalkulasi
+        function calculateNetSalary() {
+            const salary = parseFloat(salaryEl.value) || 0;
+            const bonus = parseFloat(bonusEl.value) || 0;
+            const deduct = parseFloat(deductEl.value) || 0;
+            const net = salary + bonus - deduct;
+            netSalaryEl.value = net;
+        }
+
+        // Event listener supaya realtime saat input berubah
+        [salaryEl, bonusEl, deductEl].forEach(el =>
+            el.addEventListener('input', calculateNetSalary)
+        );
+
+        // Initial calculate jika input sudah ada nilai awal
+        calculateNetSalary();
+    </script>
 @endsection

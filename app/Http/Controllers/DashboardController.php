@@ -21,11 +21,29 @@ class DashboardController extends Controller
         $data['judul_page'] = 'Dashboard';
 
         $data['employeeCount'] = Employee::count();
-        $data['employeeLatest'] = Employee::orderBy('hire_date', 'desc')->take(3)->get();
+        $data['employeeLatest'] = Employee::orderBy('hire_date', 'desc')->take(6)->get();
         $data['departementCount'] = Departement::count();
         $data['payrollCount'] = Payroll::count();
         $data['presenceCount'] = Presence::count();
         $data['task'] = Task::all();
+         $data['taskLatest'] = Task::orderBy('due_date', 'desc')->take(8)->get();
         return view('dashboard.index', $data);
+    }
+
+    public function presence()
+    {
+        $data = Presence::where('status', 'present')            
+            ->selectRaw('MONTH(date) as month,YEAR(date) as year,COUNT(*) as total_present')
+            ->groupBy('year', 'month')
+            ->orderBy('month', 'asc') // Order by month ascending Jan, feb, mar, etc.            
+            ->get();
+
+        $temp = [];
+        $i = 0;
+        foreach ($data as $item) {
+            $temp[$i] = $item->total_present;
+            $i++;
+        }
+        return response()->json($temp);
     }
 }
