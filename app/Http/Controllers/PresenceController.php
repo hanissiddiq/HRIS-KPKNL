@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Presence;
 use App\Models\Employee;
+use App\Models\Setting;
 use Carbon\Carbon;
 
 class PresenceController extends Controller
@@ -16,6 +17,8 @@ class PresenceController extends Controller
     {
         $data['page'] = 'Presence';
         $data['judul_page'] = 'Presence';
+
+
         if (session('role') == 'Admin' || session('role') == 'HRD' || session('role') == 'Manager') {
             $data['presence'] = Presence::all();
         } else {
@@ -32,6 +35,7 @@ class PresenceController extends Controller
     {
         $data['page'] = 'Presence';
         $data['judul_page'] = 'Create Presence';
+        $data['lokasi_kantor'] = Setting::first();
         $data['employee'] = Employee::all()->sortBy('fullname');
         return view('presences.create', $data);
     }

@@ -1,6 +1,6 @@
 @extends('layouts.frame_dashboard')
-@section('content') 
-    
+@section('content')
+
 
         {{-- <div id="main"> --}}
             <header class="mb-3">
@@ -224,11 +224,11 @@
                                                                  @else
                                                                  <span class="badge bg-info text-white"> {{ ucfirst($task->status) }}</span>
                                                                  @endif
-                                                               
+
                                                             </p>
                                                         </td>
-                                                    </tr> 
-                                                    @endforeach                                                   
+                                                    </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -266,7 +266,7 @@
                                         <h5 class="mb-1">{{ $e->fullname }}</h5>
                                         <h6 class="text-muted mb-0">{{ $e->email }}</h6>
                                     </div>
-                                </div>                                    
+                                </div>
                                 @endforeach
                             </div>
 
@@ -304,4 +304,63 @@
         </div>
     {{-- </div> --}}
     @endsection
+@section('scripts')
+<script>
+    // custom ChartJS untuk presensi
+        var ctxBar = document.getElementById('presence').getContext('2d');
+        var myBar = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Total Presence',
+                    data: [],
+                    backgroundColor: 'rgba(150, 148, 255, 0.2)',
+                    borderColor: '#57caeb',
+                    borderWidth: .3
 
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Latest Presence'
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Presence Data'
+                    }
+                }
+            }
+        });
+
+
+        function updateChart() {
+           fetch('/dashboard/presence')
+                .then(response => response.json())
+                .then((output) => {
+
+                    myBar.data.datasets= [
+                        {
+                            label: 'Total Presence',
+                            data: output,
+                            backgroundColor: 'rgba(150, 148, 255, 0.2)',
+                            borderColor: '#57caeb',
+                            borderWidth: .3
+                        }
+                    ];
+                    myBar.update();
+                });
+
+        }
+
+        // Call updateChart() whenever you need to refresh the chart data
+        updateChart();
+</script>
+   @endsection

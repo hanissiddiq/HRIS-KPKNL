@@ -9,6 +9,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\LeaveRequestController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,7 +25,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard')->middleware(['role:Admin,HRD,Manager,Data Entry,Karyawan']);
 Route::get('/dashboard/presence', [DashboardController::class, 'presence']);
 
-
+Route::middleware(['auth', 'role:Admin'])->group(function () {
+    Route::get('/admin/setting/office-location', [SettingController::class, 'officeLocationForm'])->name('admin.setting.office-location');
+    Route::post('/admin/setting/office-location', [SettingController::class, 'updateOfficeLocation'])->name('admin.setting.office-location.update');
+});
 
 Route::get('/task/done/{id}', [TaskController::class, 'done'])->name('task.done');
 Route::get('/task/pending/{id}', [TaskController::class, 'pending'])->name('task.pending');

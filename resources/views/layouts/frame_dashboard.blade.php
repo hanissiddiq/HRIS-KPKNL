@@ -34,6 +34,11 @@
     <link rel="stylesheet" href="{{ asset('mazer/dist/assets/extensions/@icon/dripicons/dripicons.css') }}">
     <link rel="stylesheet" href="{{ asset('mazer/dist/assets/compiled/css/ui-icons-dripicons.css') }}">
 
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
 </head>
 
 <body>
@@ -151,6 +156,12 @@
                                 <a href="{{ route('leave-request') }}" class='sidebar-link'>
                                     <i class="bi bi-shift-fill"></i>
                                     <span>Pengajuan Cuti</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  {{ $page == 'Setting' ? 'active' : '' }}  ">
+                                <a href="{{ route('admin.setting.office-location') }}" class='sidebar-link'>
+                                    <i class="bi bi-gear"></i>
+                                    <span>Setting</span>
                                 </a>
                             </li>
                         @endif
@@ -292,70 +303,14 @@
             // altInput: true,
             // altFormat: "F j, Y",
             // defaultDate: "today",
-        });   
+        });
     </script>
 
-   
+
+@yield('scripts')
 
 
-<script>
-    // custom ChartJS untuk presensi
-        var ctxBar = document.getElementById('presence').getContext('2d');
-        var myBar = new Chart(ctxBar, {
-            type: 'bar',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                datasets: [{
-                    label: 'Total Presence',
-                    data: [],
-                    backgroundColor: 'rgba(150, 148, 255, 0.2)',
-                    borderColor: '#57caeb',
-                    borderWidth: .3
 
-                }]
-            },
-            options: {
-                responsive: true,
-                title: {
-                    display: true,
-                    text: 'Latest Presence'
-                },
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Presence Data'
-                    }
-                }
-            }
-        });
-
-
-        function updateChart() {
-           fetch('/dashboard/presence')
-                .then(response => response.json())
-                .then((output) => {
-                                     
-                    myBar.data.datasets= [
-                        {
-                            label: 'Total Presence',
-                            data: output,
-                            backgroundColor: 'rgba(150, 148, 255, 0.2)',
-                            borderColor: '#57caeb',
-                            borderWidth: .3
-                        }
-                    ];
-                    myBar.update();
-                });
-                
-        }
-        
-        // Call updateChart() whenever you need to refresh the chart data
-        updateChart();
-</script>
 
 </body>
 
